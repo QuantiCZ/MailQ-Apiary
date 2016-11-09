@@ -1124,7 +1124,7 @@ A single Newsletter object with all its details
 + Response 500
 + Response 503 
 
-### Update a SMS newsletter [PUT]
+### Update theMS SMS newsletter [PUT]
 + Request
     + Header
 
@@ -1143,6 +1143,24 @@ A single Newsletter object with all its details
                  "text": "SMS message text",
                  "recipientsListId": 25
             }
+            
++ Response 204
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+### Delete the Newsletter [DELETE]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
             
 + Response 204
 + Response 400
