@@ -1,0 +1,2716 @@
+FORMAT: 1A
+HOST: https://q.quanti.cz/api/v2
+
+# Mailing V2 Resources
+**Mailing** is the **Quanti Ltd** web application project for sending newsletters and notification emails.
+
+* Data are taken and provided only in the format **application/json**! 
+* If an error occurs, the API returns the error description and sets the **HTTP (4xx) code**. 
+* Each request must be set the **Content-Type** header with the value of **application/json**. 
+* The decimal separator is a **period** (not a comma!).
+* When sending a request, you MUST always check that the server returned **HTTP response code 2xx**. If the code is different, the request was not processed successfully. 
+* Each request (except authentication) must be sent with the **X-Api-Key header**. For getting the value for your company, please, contact ondrej.hrabal@quanti.cz
+* DateTimes are specified in the **ISO 8601** format.
+* Use only the **UTF-8** encoding.
+
+# Group Campaigns
+Notes related resources of the **Campaigns API**
+
+## Campaign Collection [/companies/{companyId}/campaigns]
+A Campaign collection with Campaign object details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    
+
+### List all Campaigns [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1, 
+                "name": "First campaign",
+                "created": "2014-05-04T11:51:31.000+02:00",
+                "company": {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                },
+                "newsletters": [
+                    {
+                        "id": 1,
+                        "link": "https://www.mailq.quanti.cz/api/v2/companies/1/newsletters/1"
+                    },
+                    {
+                        "id": 2,
+                        "link": "https://www.mailq.quanti.cz/api/v2/companies/1/newsletters/2"
+                    }
+                ]
+            }, 
+            {
+                "id": 2, 
+                "name": "Second campaign",
+                "created": "2014-05-04T11:51:31.000+02:00",
+                "company": {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                },
+                "newsletters": [
+                    {
+                        "id": 10,
+                        "link": "https://www.mailq.quanti.cz/api/v2/companies/1/newsletters/10"
+                    },
+                    {
+                        "id": 12,
+                        "link": "https://www.mailq.quanti.cz/api/v2/companies/1/newsletters/12"
+                    }
+                ]
+            }
+        ]
+
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## Campaign Object [/companies/{companyId}/campaigns/{campaignId}]
+A single Campaign object with all its details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + campaignId (required, number, `1`) ... Numeric `campaignId` of the Campaign to perform action with.
+        
+
+### Retrieve a Campaign [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200 (application/json)
+
+        {
+            "id": 1, 
+            "name": "First campaign",
+            "created": "2014-05-04T11:51:31.000+02:00",
+            "company": {
+                "id": 1,
+                "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+            },
+            "newsletters": [
+                {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1/newsletters/1"
+                },
+                {
+                    "id": 2,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1/newsletters/2"
+                }
+            ]
+        }
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+# Group Companies
+Notes related resources of the **Companies API**
+
+## Company Object [/companies/{companyId}]
+A single Company object with all its details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    
+
+### Retrieve a Company [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200 (application/json)
+
+        {
+            "id": 1, 
+            "name": "First company",
+            "apiKey": "12ccadff02989e5b483bf1de5087e6cd6d59235140275d851473419fa96c086f",
+            "defaultSendAs": "Hello",
+            "defaultSenderEmail": "email@company.com",
+            "users": [
+                {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1/users/1"
+                },
+                {
+                    "id": 2,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1/users/2"
+                }
+            ],
+            "senderEmails": [
+                {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1/sender-emails/1"
+                },
+                {
+                    "id": 2,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1/sender-emails/2"
+                }
+            ],
+            "recipientLists": [
+                {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1/recipients-lists/1"
+                },
+                {
+                    "id": 2,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1/recipients-lists/2"
+                }
+            ]
+        }
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## Company Api key Object [/companies/{companyId}/]
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    
+### Regenerate the Company Api Key [PUT]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+        { 
+            "id": 1, 
+            "apiKey": "49f80c3732cb8940ea5ee79de5e86d684712ce097cb426d5cca87b10745fcc4b" 
+        }
+        
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## Multiple global unsubscriber [/companies/{companyId}/unsubscribers]
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    
+### Create multiple global unsubscribers [POST]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
+    + Body
+    
+            [
+                { 
+                    "email": "first-recipient@company.com" 
+                },
+                { 
+                    "email": "second-recipient@company.com" 
+                }
+            ]
+
++ Response 204
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## Unsubscriber actions [/companies/{companyId}/unsubscribers/actions]
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    
+### Gets unsubscriber list of possible unsubscribe types [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200 (application/json)
+
+            {
+                "actions": [
+                    "MANUAL",
+                    "API",
+                    "NEWSLETTER",
+                    "APPLICATION"
+                ]
+            ]
+            
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## Multiple global unsubscriber [/companies/{companyId}/unsubscribers{?from}]
+
++ Parameters
+    + from (required, datetime (ISO 8601), `2014-08-28T17:02:27.761+02:00`) ... Datetime `from` of the last product supplies synchronization.
+
+
+### Get multiple global unsubscribers [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200
+
+        [
+            {
+                "id": 1, 
+                "email": "ondrej.hrabal@quanti.cz",
+                "unsubscribed": "2014-05-04T13:00:35.000+02:00",
+                "action": "NEWSLETTER",
+                "recipientList": {
+                    "id": 5,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1/recipients-lists/5"
+                }
+                "company": {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                }
+            }, 
+            {
+                "id": 3, 
+                "email": "ondrej.hrabal@quanti.cz",
+                "unsubscribed": "2014-06-14T15:21:37.000+02:00",
+                "action": "NEWSLETTER",
+                "recipientList": {
+                    "id": 8,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1/recipients-lists/8"
+                }
+                "company": {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                }
+            },
+        ]
+
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## Global unsubscriber [/companies/{companyId}/unsubscribers/{email}]
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + email (required, string, `ondrej.hrabal@quanti.cz`) ... String `email` of the Unsubscriber.
+
+### Get unsubscriber [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1, 
+                "email": "ondrej.hrabal@quanti.cz",
+                "unsubscribed": "2014-05-04T13:00:35.000+02:00",
+                "action": "NEWSLETTER",
+                "recipientList": {
+                    "id": 5,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1/recipients-lists/5"
+                }
+                "company": {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                }
+            }, 
+            {
+                "id": 3, 
+                "email": "ondrej.hrabal@quanti.cz",
+                "unsubscribed": "2014-06-14T15:21:37.000+02:00",
+                "action": "NEWSLETTER",
+                "recipientList": {
+                    "id": 8,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1/recipients-lists/8"
+                }
+                "company": {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                }
+            },
+        ]
+
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+### Create global unsubscriber [PUT]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 204
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+### Delete global unsubscriber [DELETE]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 204
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+# Group LogMessages
+Notes related resources of the **LogMessages API**
+
+## LogMessage Collection [/companies/{companyId}/log-messages]
+A LogMessage collection with LogMessage object details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    
+
+### List all LogMessages [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1, 
+                "title": "First message",
+                "text": "Content of the first message.",
+                "type": "SYSTEM"
+                "created": "2014-05-04T13:00:35.000+02:00"
+                "company": {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                }
+            }, 
+            {
+                "id": 2, 
+                "title": "Second message",
+                "text": "Content of the second message.",
+                "type": "SYSTEM",
+                "created": "2014-05-04T13:00:20.000+02:00",
+                "company": {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                }
+            }
+        ]
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## LogMessage types [/companies/{companyId}/log-messages/types]
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    
+### Gets log message list of possible types [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200 (application/json)
+
+            {
+                "types": [
+                    "SYSTEM",
+                    "NEWS"
+                ]
+            ]
+
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## LogMessage Object [/companies/{companyId}/log-messages/{messageId}]
+A single LogMessage object with all its details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + messageId (required, number, `1`) ... Numeric `messageId` of the LogMessage to perform action with.
+    
+
+### Retrieve a LogMessage [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200 (application/json)
+
+        {
+            "id": 1, 
+            "title": "First message",
+            "text": "Content of the first message.",
+            "type": "SYSTEM",
+            "created": "2014-05-04T13:00:35.000+02:00",
+            "company": {
+                "id": 1,
+                "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+            }
+        }
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+# Group Newsletters
+Notes related resources of the **Newsletters API**
+
+## Newsletter Collection [/companies/{companyId}/newsletters/]
+
+A Newsletter collection with Newsletter object details
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the newsletter to perform action with.
+    
+
+### List all Newsletters [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+            [
+               {
+                  "id":6,
+                  "name":"tesas",
+                  "code":null,
+                  "subject":"X12",
+                  "sendAs":"Quanti",
+                  "senderEmail":"newsletter@quanti.cz",
+                  "status":"ready",
+                  "from":"2014-06-04T16:34:00.000",
+                  "to":"9999-12-31T16:41:30.009",
+                  "automaticTime":false,
+                  "recipientsListId":1,
+                  "campaign":"First campaign",
+                  "attachments":[
+                        {
+                            "displayName": "Priloha 1",
+                            "link": null,
+                            "mimeType": "text/plain"
+                        },
+                        {
+                            "displayName": "Priloha 2",
+                            "link": "odkaz na zdroj",
+                            "mimeType": "image/jpeg"
+                        }
+                    ],
+                  "company":{
+                     "id":1,
+                     "link":"https://www.mailq.quanti.cz/api/v2/companies/1"
+                  }
+               },
+               {
+                  "id":7,
+                  "name":"First newsletter",
+                  "code":"xxx",
+                  "subject":"První newsletter",
+                  "sendAs":"Quanti",
+                  "senderEmail":"newsletter@quanti.cz",
+                  "status":"ready",
+                  "from":"2014-05-13T17:39:34.000",
+                  "to":"2014-06-06T16:39:34.000",
+                  "automaticTime":false,
+                  "recipientsListId":null,
+                  "campaign":"First campaign",
+                  "company":{
+                     "id":1,
+                     "link":"https://www.mailq.quanti.cz/api/v2/companies/1"
+                  }
+               }
+            ]
+        
++ Response 401  
++ Response 403
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+### Create a Newsletter [POST]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+    
+            {
+                 "name": "Můj API newsletter",
+                 "campaign": "Kampaň",
+                 "subject" : "Dárek",
+                 "senderEmail" : "info@firma.cz",
+                 "sendAs" : "Perfektní firma",
+                 "from" : "2014-06-12T06:00:00.000",
+                 "to" : "2014-06-19T06:00:00.000",
+                 "text": "Alternative base64 email text",
+                 "automaticTime": false,
+                 "recipientsListId": 25,
+                 "templateUrl" : "http://mailq.cz/newsletter.html",
+                 "unsubscribeTemplateUrl" : "http://mailq.cz/unsubscribe.html",
+                 "attachments":[
+                        {
+                            "displayName": "Priloha 1",
+                            "link": null,
+                            "source": "base64text",
+                            "mimeType": "text/plain"
+                        },
+                        {
+                            "displayName": "Priloha 2",
+                            "link": "odkaz na zdroj",
+                            "source": "base64text",
+                            "mimeType": "image/jpeg"
+                        }
+                    ]
+            }
+            
++ Response 201
+    + Header
+            
+            Location: https://www.mailq.quanti.cz/api/v2/companies/1/newsletters/1
+        
++ Response 400
++ Response 401  
++ Response 403
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## Newsletter statuses [/companies/{companyId}/newsletters/statuses]
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    
+### Gets newsletter list of possible statuses [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+            {
+                "statuses": [
+                    "TESTING",
+                    "WAITING",
+                    "PREPARING",
+                    "READY",
+                    "SENDING",
+                    "FINISHED",
+                    "STOPPED",
+                    "HISTORY"
+                ]
+            ]
+
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## Newsletter object [/companies/{companyId}/newsletters/{newsletterId}]
+
+A single Newsletter object with all its details
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Newsletter to perform action with.
+    + newsletterId (required, number, `1`) ... Numeric `newsletterId` of the Newsletter to perform action with.
+   
+### Get a Newsletter [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+            
++ Response 200
+
+        {
+            "id":7,
+            "name":"First newsletter",
+            "code":"xxx",
+            "subject":"První newsletter",
+            "sendAs":"Quanti",
+            "senderEmail":"newsletter@quanti.cz",
+            "status":"ready",
+            "from":"2014-05-13T17:39:34.000",
+            "to":"2014-06-06T16:39:34.000",
+            "text": "Alternative email text",
+            "automaticTime":false,
+            "recipientsListId":null,
+            "campaign":"First campaign",
+            "attachments":[
+                {
+                    "displayName": "Priloha 1",
+                    "link": null,
+                    "mimeType": "text/plain"
+                },
+                {
+                    "displayName": "Priloha 2",
+                    "link": "odkaz na zdroj",
+                    "mimeType": "image/jpeg"
+                }
+            ],
+            "company":{
+                "id":1,
+                "link":"https://www.mailq.quanti.cz/api/v2/companies/1"
+            }
+        }
+     
+
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503 
+
+### Update the Newsletter [PUT]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+    
+            {
+                 "name": "Můj API newsletter",
+                 "campaign": "Kampaň",
+                 "subject" : "Dárek",
+                 "senderEmail" : "info@firma.cz",
+                 "sendAs" : "Perfektní firma",
+                 "from" : "2014-06-12T06:00:00.000",
+                 "to" : "2014-06-19T06:00:00.000",
+                 "text": "Alternative base64 email text",
+                 "automaticTime": false,
+                 "recipientsListId": 25,
+                 "templateUrl" : "http://mailq.cz/newsletter.html",
+                 "unsubscribeTemplateUrl" : "http://mailq.cz/unsubscribe.html",
+                 "attachments":[
+                        {
+                            "displayName": "Priloha 1",
+                            "link": null,
+                            "source": "base64text",
+                            "mimeType": "text/plain"
+                        },
+                        {
+                            "displayName": "Priloha 2",
+                            "link": "odkaz na zdroj",
+                            "source": "base64text",
+                            "mimeType": "image/jpeg"
+                        }
+                    ]
+            }
+            
++ Response 204
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+### Delete the Newsletter [DELETE]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 204
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## Newsletter preparation [/companies/{companyId}/newsletters/{newsletterId}/preparation]
+
+Resource to starting and stoping newsletter preparation
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Newsletter to perform action with.
+    + newsletterId (required, number, `1`) ... Numeric `newsletterId` of the Newsletter to perform action with.
+    
+
+### Update preparation status of the Newsletter [PUT]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+    
+            {
+                 "start": true
+            }
+            
++ Response 204
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## Newsletter testing email [/companies/{companyId}/newsletters/{newsletterId}/test-email]
+
+Resource of newsletter testing e-mail
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Newsletter to perform action with.
+    + newsletterId (required, number, `1`) ... Numeric `newsletterId` of the Newsletter to perform action with.
+    
+
+### Create testing e-mail of a Newsletter [POST]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+    
+            {
+                 "email": "test@quanti.cz"
+            }
+            
++ Response 204
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+<!-- ## Newsletter statistics [/companies/{companyId}/newsletters/{newsletterId}/statistics]
+
+Resource of newsletter statistics
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Newsletter to perform action with.
+    + newsletterId (required, number, `1`) ... Numeric `newsletterId` of the Newsletter to perform action with.
+    
+
+### Get the Newsletter statistics [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200
+    
+            {
+                 "recipients": 10,
+                 "sent": 9,
+                 "delivered": 9,
+                 "opened": 7,
+                 "unsubscribedBlocked": 1,
+                 "unsubscribed": 2
+            }
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+-->
+
+# Group SMS newsletters
+Notes related resources of the **SMS newsletters API**
+
+## SMS newsletter Collection [/companies/{companyId}/sms-newsletters/]
+
+A SMS newsletter collection with SMS newsletter object details
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the SMS newsletter to perform action with.
+    
+
+### List all SMS newsletters [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+            [
+               {
+                  "id":6,
+                  "name":"tesas",
+                  "code":null,
+                  "status":"ready",
+                  "text": "SMS message text",
+                  "from":"2014-06-04T16:34:00.000",
+                  "to":"9999-12-31T16:41:30.009",
+                  "recipientsListId":1,
+                  "campaign":"First campaign",
+                  "company":{
+                     "id":1,
+                     "link":"https://www.mailq.quanti.cz/api/v2/companies/1"
+                  }
+               },
+               {
+                  "id":7,
+                  "name":"First newsletter",
+                  "code":"xxx",
+                  "status":"ready",
+                  "text": "SMS message text",
+                  "from":"2014-05-13T17:39:34.000",
+                  "to":"2014-06-06T16:39:34.000",
+                  "recipientsListId":null,
+                  "csvUrl": "http://192.168.65.142/mailq/phones.csv",
+                  "campaign":"First campaign",
+                  "company":{
+                     "id":1,
+                     "link":"https://www.mailq.quanti.cz/api/v2/companies/1"
+                  }
+               }
+            ]
+        
++ Response 401  
++ Response 403
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+### Create a SMS newsletter [POST]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+    
+            {
+                 "name": "Můj API newsletter",
+                 "campaign": "Kampaň",
+                 "code": "xxx",
+                 "from": "2014-06-12T06:00:00.000",
+                 "to": "2014-06-19T06:00:00.000",
+                 "text": "SMS message text",
+                 "csvUrl": "http://192.168.65.142/mailq/phones.csv"
+            }
+            
++ Response 201
+    + Header
+            
+            Location: https://www.mailq.quanti.cz/api/v2/companies/1/sms-newsletters/1
+        
++ Response 400
++ Response 401  
++ Response 403
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## SMS newsletter statuses [/companies/{companyId}/sms-newsletters/statuses]
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    
+### Gets SMS newsletter list of possible statuses [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+            {
+                "statuses": [
+                    "TESTING",
+                    "WAITING",
+                    "PREPARING",
+                    "READY",
+                    "SENDING",
+                    "FINISHED",
+                    "STOPPED"
+                ]
+            ]
+
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## SMS newsletter object [/companies/{companyId}/sms-newsletters/{smsNewsletterId}]
+
+A single Newsletter object with all its details
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the SMS newsletter to perform action with.
+    + smsNewsletterId (required, number, `1`) ... Numeric `smsNewsletterId` of the SMS newsletter to perform action with.
+   
+### Get a SMS newsletter [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+            
++ Response 200
+
+        {
+            "id":7,
+            "name":"First SMS newsletter",
+            "code": "xxx",
+            "status":"ready",
+            "from":"2014-05-13T17:39:34.000",
+            "to":"2014-06-06T16:39:34.000",
+            "text": "SMS message text",
+            "csvUrl": "http://192.168.65.142/mailq/phones.csv",
+            "recipientsListId":null,
+            "campaign":"First campaign",
+            "company":{
+                "id":1,
+                "link":"https://www.mailq.quanti.cz/api/v2/companies/1"
+            }
+        }
+     
+
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503 
+
+### Update a SMS newsletter [PUT]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+    
+            {
+                 "name": "Můj API newsletter",
+                 "campaign": "Kampaň",
+                 "code": "xxx",
+                 "from": "2014-06-12T06:00:00.000",
+                 "to": "2014-06-19T06:00:00.000",
+                 "text": "SMS message text",
+                 "recipientsListId": 25
+            }
+            
++ Response 204
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## SMS newsletter preparation [/companies/{companyId}/sms-newsletters/{smsNewsletterId}/preparation]
+
+Resource to starting and stoping SMS newsletter preparation
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the SMS newsletter to perform action with.
+    + smsNewsletterId (required, number, `1`) ... Numeric `smsNewsletterId` of the SMS newsletter to perform action with.
+    
+
+### Update preparation status of a SMS newsletter [PUT]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+    
+            {
+                 "start": true
+            }
+            
++ Response 204
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## SMS newsletter testing sms [/companies/{companyId}/sms-newsletters/{smsNewsletterId}/test-sms]
+
+Resource of newsletter testing sms
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the SMS newsletter to perform action with.
+    + smsNewsletterId (required, number, `1`) ... Numeric `smsNewsletterId` of the SMS newsletter to perform action with.
+    
+
+### Create testing SMS of a SMS newsletter [POST]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+    
+            {
+                 "toNumber": "+420123456789"
+            }
+            
++ Response 204
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+# Group Notifications
+Notes related resources of the **Notifications API**
+
+## Notifications Collection [/companies/{companyId}/notifications]
+A Notifications collection with Notification object details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Notification to perform action with.
+    
+
+### List all Notifications [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1, 
+                "name": "First Notification",
+                "code": "xxx",
+                "subject": "Subject",
+                "sendAs": "Company",
+                "appliedSenderEmail": "email@company.com",
+                "text": "Alternative email text",
+                "template": "base64TemplateData",
+                "status": "OK",
+                "company": {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                }
+            }, 
+            {
+                "id": 2, 
+                "name": "Second Notification",
+                "code": "CZ-aa",
+                "subject": "Subject",
+                "sendAs": "Company",
+                "appliedSenderEmail": "email@company.com",
+                "text": "Alternative email text",
+                "template": "base64TemplateData",
+                "status": "READY",
+                "company": {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                }
+            }
+        ]
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+### Create a Notification [POST]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+    
+            {
+                "name": "First Notification",
+                "code": "xxx",
+                "subject": "Subject",
+                "sendAs": "Company",
+                "text": "Alternative base64 email text",
+                "template": "base64TemplateData",
+                "appliedSenderEmail": "email@company.com"
+            }
+            
++ Response 201
+    + Header
+            
+            Location: https://www.mailq.quanti.cz/api/v2/companies/1/notifications/1
+        
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 409
++ Response 500
++ Response 503
+
+## Notification statuses [/companies/{companyId}/notifications/statuses]
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    
+### Gets notification list of possible statuses [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+            {
+                "statuses": [
+                    "READY",
+                    "FINISHED"
+                ]
+            ]
+
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## Notification Object [/companies/{companyId}/notifications/{notificationId}]
+A single Notification object with all its details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + notificationId (required, number, `1`) ... Numeric `notificationId` of the Notification to perform action with.
+    
+
+### Retrieve a Notification [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200 (application/json)
+
+        {
+            "id": 1, 
+            "name": "First Notification",
+            "code": "xxx",
+            "subject": "Subject",
+            "sendAs": "Company",
+            "appliedSenderEmail": "email@company.com",
+            "text": "Alternative email text",
+            "template": "base64TemplateData",
+            "status": "OK",
+            "company": {
+                "id": 1,
+                "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+            }
+        }
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+### Edit the Notification [PUT]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+    
+            {
+                "name": "First Notification",
+                "code": "xxx",
+                "subject": "Subject",
+                "sendAs": "Company",
+                "text": "Alternative base64 email text",
+                "template": "base64TemplateData",
+                "appliedSenderEmail": "email@company.com"
+            }
+            
++ Response 204
+        
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 409
++ Response 500
++ Response 503
+
+### Delete the Notification [DELETE]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 204
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## NotificationData Collection [/companies/{companyId}/notifications/{notificationId}/history/{email}]
+A NotificationData collection with NotificationData object details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + notificationId (required, number, `1`) ... Numeric `notificationId` of the Notification to perform action with.
+    + email (required, string, `ondrej.hrabal@quanti.cz`) ... String `email` of the Notifications
+    
+
+### List all NotificationData [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1, 
+                "email": "recipient1@email.com",
+                "replyToEmail": "reply-to@email.com",
+                "data": {
+                    "key1": "value1", 
+                    "key2": "value2"
+                },
+                "attachments":[
+                    {
+                        "displayName": "Priloha 1",
+                        "fileName": "attachment--0000-2222-3333-4444",
+                        "link": "http://img.quanti.cz/obr1.png",
+                        "mimeType": "text/plain"
+                    },
+                    {
+                        "displayName": "Priloha 2",
+                        "fileName": "attachment--1111-2222-3333-4444",
+                        "link": "http://img.quanti.cz/obr2.png",
+                        "mimeType": "image/jpeg"
+                    }
+                ],
+                "openedTimestamp": "2014-05-13T15:49:00.000+02:00",
+                "undeliveredTimestamp": "null",
+                "unsubscribedTimestamp": "null"
+            }, 
+            {
+                "id": 2, 
+                "email": "recipient1@email.com",
+                "replyToEmail": "reply-to@email.com",
+                "data": {
+                    "key1": "value1", 
+                    "key2": "value2"
+                },
+                "attachments":[
+                    {
+                        "displayName": "Priloha 1",
+                        "fileName": "attachment--0000-2222-3333-4444",
+                        "link": "http://img.quanti.cz/obr1.png",
+                        "mimeType": "text/plain"
+                    },
+                    {
+                        "displayName": "Priloha 2",
+                        "fileName": "attachment--1111-2222-3333-4444",
+                        "link": "http://img.quanti.cz/obr2.png",
+                        "mimeType": "image/jpeg"
+                    }
+                ],
+                "openedTimestamp": "2014-05-13T15:49:00.000+02:00",
+                "undeliveredTimestamp": "2014-05-13T15:49:00.000+02:00",
+                "unsubscribedTimestamp": "null"
+            }
+        ]
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## NotificationData Object [/companies/{companyId}/notifications/{notificationId}/data/{notificationDataId}]
+A single NotificationData object with all its details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + notificationId (required, number, `1`) ... Numeric `notificationId` of the Notification to perform action with.
+    + notificationDataId (required, number, `1`) ... Numeric `notificationDataId` of the NotificationData to perform action with.
+    
+
+### Retrieve a NotificationData [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200 (application/json)
+
+        {
+            "id": 1, 
+            "email": "recipient1@email.com",
+            "replyToEmail": "reply-to@email.com",
+            "data": {
+                "key1": "value1", 
+                "key2": "value2"
+            },
+            "attachments":[
+                {
+                    "displayName": "Priloha 1",
+                    "fileName": "attachment--0000-2222-3333-4444",
+                    "link": "http://img.quanti.cz/obr1.png",
+                    "mimeType": "text/plain"
+                },
+                {
+                    "displayName": "Priloha 2",
+                    "fileName": "attachment--1111-2222-3333-4444",
+                    "link": "http://img.quanti.cz/obr2.png",
+                    "mimeType": "image/jpeg"
+                }
+            ],
+            "openedTimestamp": "1392396187278",
+            "undeliveredTimestamp": "null",
+            "unsubscribedTimestamp": "null"
+        }
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## NotificationData Object [/companies/{companyId}/notifications/{notificationId}/data/]
+A single NotificationData object with all its details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + notificationId (required, number, `1`) ... Numeric `notificationId` of the Notification to perform action with.
+    
+
+### Send a Notification [POST]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+    
+            {
+                "recipientEmail": "recipient@email.com",
+                "replyToEmail": "reply-to@email.com",
+                "cc": [
+                    "hrabalo@seznam.cz",
+                    "ondra.hrabal@gmail.com"
+                ],
+                "bcc": [
+                    "hrabalo@seznam.cz",
+                    "ondra.hrabal@gmail.com"
+                ],
+                "dateFrom": "2014-06-19T06:00:00.000",
+                "data": {
+                    "key1": "value1", 
+                    "key2": "value2"
+                },
+                "attachments":[
+                    {
+                        "displayName": "Priloha 1",
+                        "link": null,
+                        "source": "base64text",
+                        "mimeType": "text/plain"
+                    },
+                    {
+                        "displayName": "Priloha 2",
+                        "link": "odkaz na zdroj",
+                        "source": "base64text",
+                        "mimeType": "image/jpeg"
+                    }
+                ]
+            }
+            
++ Response 201
+    + Header
+            
+            Location: https://www.mailq.quanti.cz/api/v2/companies/1/notifications/1/data/1
+        
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+# Group SMS-Notifications
+
+## SMS-Notifications Collection [/companies/{companyId}/sms-notifications]
+A SMS-Notifications collection with SMS-Notification object details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Notification to perform action with.
+    
+
+### List all SMS-Notifications [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1, 
+                "name": "First Notification",
+                "code": "xxx",
+                "template": "base64text",
+                "status": "OK",
+                "company": {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                }
+            }, 
+            {
+                "id": 2, 
+                "name": "Second Notification",
+                "code": "xxx",
+                "template": "base64text",
+                "status": "OK",
+                "company": {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                }
+            }
+        ]
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+### Create a SMS-Notification [POST]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+    
+            {
+                "name": "First Notification",
+                "code": "xxx",
+                "template": "base64text"
+            }
+            
++ Response 201
+    + Header
+            
+            Location: https://www.mailq.quanti.cz/api/v2/companies/1/sms-notifications/1
+        
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 409
++ Response 500
++ Response 503
+
+## SMS notification statuses [/companies/{companyId}/sms-notifications/statuses]
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    
+### Gets SMS notification list of possible statuses [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+            {
+                "statuses": [
+                    "READY",
+                    "FINISHED"
+                ]
+            ]
+
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## SMS-Notification Object [/companies/{companyId}/sms-notifications/{smsNotificationId}]
+A single SMS-Notification object with all its details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + smsNotificationId (required, number, `1`) ... Numeric `notificationId` of the Notification to perform action with.
+    
+
+### Retrieve a SMS-Notification [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200 (application/json)
+
+        {
+            "id": 1, 
+            "name": "First Notification",
+            "code": "xxx",
+            "template": "base64text",
+            "status": "OK",
+            "company": {
+                "id": 1,
+                "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+            }
+        }
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+### Edit the SMS-Notification [PUT]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+    
+            {
+                "name": "First Notification",
+                "code": "xxx",
+                "template": "base64text"
+            }
+            
++ Response 204
+        
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 409
++ Response 500
++ Response 503
+
+### Delete the Notification [DELETE]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 204
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## SMS-NotificationData Object [/companies/{companyId}/sms-notifications/{smsNotificationId}/data]
+
+Error codes
+
+| Error code                            | Description               |
+|---------------------------------------|---------------------------|
+| 4001                          | Invalid country.                      |
+| 4002                          | Invalid phone number.                 |
+| 4003                          | SMS text is too long.                 |
+| 4004                          | Invalid JSON data                     |
+| 4005                          | Missing variable for SMS template     |
+| 4007                          | Message text is empty                 |
+| 4008                          | Missing data template for SMS         |
+| 4008                          | Template processing error             |
+| 4009                          | Invalid JSON syntax                   |
+| 5001                          | SMS was not delivered and it will not be delivered in future                 |
+| 5002                          | Phone number does not exist                   |
+| 5003                          | SMS was not delivered during expiration time.                  |
+| 5004                          | Invalid format of phone number                  |
+| 5005                          | Unknown error                   |
+| 5006                          | Event already occured and it does not make sense to send SMS                   |
+| 5007                          | SMS text is too long                   |
+| 5010                          | Part of SMS was delivered but another part was not.                  |
+| 5013                          | Part of SMS was not delivered.                   |
+| 5015                          | SMS with this ID was not found.                  |
+
+
+Create SMS by template
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + smsNotificationId (required, number, `1`) ... Numeric `sms-notificationId` of the Notification to perform action with.
+    
+### Send a SMS-Notification [POST]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+    
+            {
+                "toNumber": "+420123456789",
+                "data": {
+                    "key1": "value1", 
+                    "key2": "value2"
+                }
+            }
+            
++ Response 201
+    + Header
+            
+            Location: https://www.mailq.quanti.cz/api/v2/companies/1/sms-notifications/1/data/1
+        
++ Response 400
+
+    + Body
+    
+            {
+                "error": {
+                    "message": "Text message is empty.",
+                    "code": 4007
+                }
+            }
+
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## SMS-NotificationData Object [/companies/{companyId}/sms-notifications/{smsNotificationId}/batch/data]
+
+Error codes
+
+| Error code                            | Description               |
+|---------------------------------------|---------------------------|
+| 4001                          | Invalid country.                      |
+| 4002                          | Invalid phone number.                 |
+| 4003                          | SMS text is too long.                 |
+| 4004                          | Invalid JSON data                     |
+| 4005                          | Missing variable for SMS template     |
+| 4006                          | Too many SMS in one batch             |
+| 4007                          | Message text is empty                 |
+| 4008                          | Missing data template for SMS         |
+| 4008                          | Template processing error             |
+| 4009                          | Invalid JSON syntax              |
+| 5001                          | SMS was not delivered and it will not be delivered in future                 |
+| 5002                          | Phone number does not exist                   |
+| 5003                          | SMS was not delivered during expiration time.                  |
+| 5004                          | Invalid format of phone number                  |
+| 5005                          | Unknown error                   |
+| 5006                          | Event already occured and it does not make sense to send SMS                   |
+| 5007                          | SMS text is too long                   |
+| 5010                          | Part of SMS was delivered but another part was not.                  |
+| 5013                          | Part of SMS was not delivered.                   |
+| 5015                          | SMS with this ID was not found.                  |
+
+Create batch of SMS by template. Maximum SMS in one batch is 100.
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + smsNotificationId (required, number, `1`) ... Numeric `sms-notificationId` of the Notification to perform action with.
+    
+### Send a SMS-Notification [POST]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+    
+            {
+                "batch": [
+                    {     
+                        "id": 1,
+                        "toNumber": "+420605134731", 
+                        "data": {         
+                            "text": "value1"   
+                        }
+                    },
+                    {     
+                        "id": 2,
+                        "toNumber": "+420605134731", 
+                        "data": {         
+                            "text": "value2"   
+                        }
+                    }
+                
+                ]
+            }
+            
++ Response 200 (application/json)
+   
+
+    + Body 
+    
+            {
+                "results": [
+                    {
+                        "id": 1,
+                        "result": "SUCCESS",
+                        "url": "http://localhost:8080/development/api/v2/companies/5/sms-notifications/24/data/56"
+                    },
+                    {
+                        "id": 2,
+                        "result": "ERROR",
+                        "message": "Invalid JSON data.",
+                        "code": 4004
+                    }
+                ]
+            }
+            
+        
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## NotificationData Object [/companies/{companyId}/sms-notifications/{smsNotificationId}/data/{smsNotificationDataId}]
+A single NotificationData object with all its details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + smsNotificationId (required, number, `1`) ... Numeric `sms-notificationId` of the Notification to perform action with.
+    + smsNotificationDataId (required, number, `1`) ... Numeric `sms-notificationDataId` of the NotificationData to perform action with.
+    
+
+### Retrieve a SMS-NotificationData [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200 (application/json)
+
+        {
+            "id": 1, 
+            "toNumber": "+420123456789",
+            "data": {
+                "key1": "value1", 
+                "key2": "value2"
+            },
+            "state": "success",
+            "sendTimestamp": "2014-05-13T15:49:00.000+02:00",
+            "message": "Zprava byla dorucena - ISUC_005 - Message delivered"
+        }
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+# Group RecipientsList
+Notes related resources of the **RecipientsList API**
+
+## RecipientsList Collection [/companies/{companyId}/recipients-lists/?email={email}]
+A RecipientsList collection with RecipientsList object details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + email (optional, string, `ondrej.hrabal@quanti.cz`) ... String `email` of the Recipient
+    
+
+### List all RecipientsList [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+        [
+            {
+              "id":1,
+              "name":"First Recipients List",
+              "created": "Mon May 23 11:29:18 CEST 2016",
+              "updated": "Mon May 23 11:29:29 CEST 2016",
+              "recipients":0,
+              "unsubscribers":0,
+              "formVisible": true,
+              "variables":[
+                 "email",
+                 "test",
+                 "abc"
+              ],
+              "company":{
+                 "id":1,
+                 "link":"https://www.mailq.quanti.cz/api/v2/companies/1"
+              }
+           },
+           {
+              "id":2,
+              "name":"Second Recipients List",
+              "created": "Mon May 23 11:29:18 CEST 2016",
+              "updated": "Mon May 23 11:29:29 CEST 2016",
+              "recipients":0,
+              "unsubscribers":0,
+              "formVisible": false,
+              "variables":[
+                 "email",
+                 "test",
+                 "abc"
+              ],
+              "company":{
+                 "id":1,
+                 "link":"https://www.mailq.quanti.cz/api/v2/companies/1"
+              }
+            }
+        ]
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## RecipientsList Collection [/companies/{companyId}/recipients-lists]
+A RecipientsList collection with RecipientsList object details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    
+
+### Create RecipientsList [POST]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
+    + Body    
+    
+            {
+                "name":"Seznam 1",
+                "description":"Testovací seznam prijemcu",
+                "variables": ["salutation","gender"],
+                "formVisible": true
+            }
+            
+
++ Response 201
+    + Header
+            
+            Location: https://www.mailq.quanti.cz/api/v2/companies/1/recipients-lists/1
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+
+## RecipientsList Object [/companies/{companyId}/recipients-lists/{recipientsListId}]
+A single RecipientsList object with all its details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + recipientsListId (required, number, `1`) ... Numeric `recipientsListId` of the RecipientsList to perform action with.
+    
+
+### Retrieve a RecipientsList [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200 (application/json)
+
+        {
+              "id":1,
+              "name":"First Recipients List",
+              "created": "Mon May 23 11:29:18 CEST 2016",
+              "updated": "Mon May 23 11:29:29 CEST 2016",
+              "recipients":0,
+              "unsubscribers":0,
+              "formVisible": true,
+              "variables":[
+                 "email",
+                 "test",
+                 "abc"
+              ],
+              "company":{
+                 "id":1,
+                 "link":"https://www.mailq.quanti.cz/api/v2/companies/1"
+              }
+           }
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+### Deletes an empty RecipientsList [DELETE]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 204 (application/json)
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## Multiple recipients [/companies/{companyId}/recipients-lists/{recipientsListId}/recipients/?dont-validate={dontValidate}]
+Creating multiple recipients at once
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + recipientsListId (required, number, `1`) ... Numeric `recipientsListId` of the RecipientsList to perform action with.
+    + dontValidate (optional, boolean, `false`) ... Boolean `dontValidate` turns off validation of columns.
+    
+
+### Create a recipients [POST]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+            
+            [
+                {
+                    "email": "first-recipient@company.com",
+                    "data": {
+                        "key1": "value1",
+                        "key2": "value2"
+                    }
+                },
+                {
+                    "email": "second-recipient@company.com",
+                    "data": {
+                        "key": "value"
+                    }
+                }
+            ]
+            
++ Response 204
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## Recipients [/companies/{companyId}/recipients-lists/{recipientsListId}/recipients]
+A Recipients collection of the RecipientsList with Recipients object details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + recipientsListId (required, number, `1`) ... Numeric `recipientsListId` of the RecipientsList to perform action with.
+
+### List all recipients list recipients [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+        [
+          {
+            "data": {
+              "email": "hrabalo@seznam.cz",
+              "salutation": "Test Ondro",
+              "code": "zxxx"
+            }
+          },
+          {
+            "data": {
+              "email": "martin.chloupek@quanti.cz",
+              "salutation": " Test Martina",
+              "code": "aaa"
+            }
+          }
+        ]
+  
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## Recipient [/companies/{companyId}/recipients-lists/{recipientsListId}/recipients/{email}/?dont-validate={dontValidate}]
+A single Recipient object
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + recipientsListId (required, number, `1`) ... Numeric `recipientsListId` of the RecipientsList to perform action with.
+    + email (required, string, `ondrej.hrabal@quanti.cz`) ... String `email` of the Recipient
+    + dontValidate (optional, boolean, `false`) ... Boolean `dontValidate` turns off validation of columns.
+
+### Create/Update a recipient [PUT]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+            
+            {
+                "data": {
+                    "key1": "value1",
+                    "key2": "value2"
+                }
+            }
+            
++ Response 204
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+### Delete a recipient [DELETE]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 204
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## Multiple unsubscribers [/companies/{companyId}/recipients-lists/{recipientsListId}/unsubscribers]
+Creating multiple unsubscribers at once
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + recipientsListId (required, number, `1`) ... Numeric `recipientsListId` of the RecipientsList to perform action with.
+    
+
+### GET an unsubscriber [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200 (application/json)
+
+            [
+                {
+                    "id": 1, 
+                    "email": "ondrej.hrabal@quanti.cz",
+                    "unsubscribed": "2014-05-04T13:00:35.000+02:00",
+                    "action": "NEWSLETTER",
+                    "recipientList": {
+                        "id": 5,
+                        "link": "https://www.mailq.quanti.cz/api/v2/companies/1/recipients-lists/5"
+                    },
+                    "company": {
+                        "id": 1,
+                        "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                    }
+                },
+                {
+                    "id": 2, 
+                    "email": "vladimir.blazek@quanti.cz",
+                    "unsubscribed": "2014-08-18T13:00:35.000+02:00",
+                    "action": "MANUAL",
+                    "recipientList": {
+                        "id": 5,
+                        "link": "https://www.mailq.quanti.cz/api/v2/companies/1/recipients-lists/5"
+                    },
+                    "company": {
+                        "id": 1,
+                        "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                    }
+                }
+            ]
+
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+
+### Create an unsubscriber [POST]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+            
+            [
+                {
+                    "email": "first-recipient@company.com"
+                },
+                {
+                    "email": "second-recipient@company.com"
+                }
+            ]
+            
++ Response 204
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## Unsubscriber [/companies/{companyId}/recipients-lists/{recipientsListId}/unsubscribers/{email}]
+Single Unsubscriber object
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + recipientsListId (required, number, `1`) ... Numeric `recipientsListId` of the RecipientsList to perform action with.
+    + email (required, string, `ondrej.hrabal@quanti.cz`) ... String `email` of the Unsubscriber
+    
+
+### GET an unsubscribers [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200 (application/json)
+
+
+        {
+            "id": 1, 
+            "email": "ondrej.hrabal@quanti.cz",
+            "unsubscribed": "2014-05-04T13:00:35.000+02:00",
+            "action": "NEWSLETTER",
+            "recipientList": {
+                "id": 5,
+                "link": "https://www.mailq.quanti.cz/api/v2/companies/1/recipients-lists/5"
+            }
+            "company": {
+                "id": 1,
+                "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+            }
+        }
+
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
+
+### Create/Update an unsubscriber [PUT]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 204
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+### Delete an unsubscriber [DELETE]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 204
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+# Group SenderEmails
+Notes related resources of the **SenderEmails API**
+
+## SenderEmail Collection [/companies/{companyId}/sender-emails]
+A SenderEmail collection with SenderEmail object details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    
+
+### List all SenderEmails [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1, 
+                "email": "first-sender-email@company.com",
+                "company": {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                }
+            }, 
+            {
+                "id": 2, 
+                "email": "second-sender-email@company.com",
+                "company": {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                }
+            }
+        ]
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## SenderEmail Object [/companies/{companyId}/sender-emails/{senderEmailId}]
+A single SenderEmail object with all its details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + senderEmailId (required, number, `1`) ... Numeric `senderEmailId` of the SenderEmail to perform action with.
+    
+
+### Retrieve a SenderEmail [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200 (application/json)
+
+        {
+            "id": 1, 
+            "email": "sender-email@company.com",
+            "company": {
+                "id": 1,
+                "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+            }
+        }
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+# Group Users
+Notes related resources of the **Users API**
+
+## User Collection [/companies/{companyId}/users]
+A User collection with User object details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    
+
+### List all Users [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1, 
+                "username": "john.snow@gmail.com",
+                "forename": "John",
+                "surname": "Snow",
+                "phone": "134-567-891",
+                "email": "js@company.com",
+                "position": "Manager",
+                "testEmail": "john.test@gmail.com",
+                "companies": [
+                    {
+                        "id": 1,
+                        "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                    },
+                    {
+                        "id": 2,
+                        "link": "https://www.mailq.quanti.cz/api/v2/companies/2"
+                    }
+                ]
+            }, 
+            {
+                "id": 2, 
+                "username": "mr.bean@yahoo.com",
+                "forename": "Mr.",
+                "surname": "Bean",
+                "phone": "123456789",
+                "email": "bean@company.com",
+                "position": "Director",
+                "testEmail": "bean@gmail.com",
+                "companies": [
+                    {
+                        "id": 1,
+                        "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                    },
+                    {
+                        "id": 5,
+                        "link": "https://www.mailq.quanti.cz/api/v2/companies/5"
+                    }
+                ]
+            }
+        ]
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## User Object [/companies/{companyId}/users/{userId}]
+A single User object with all its details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + userId (required, number, `1`) ... Numeric `userId` of the User to perform action with.
+    
+
+### Retrieve a User [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200 (application/json)
+
+        {
+            "id": 1, 
+            "username": "john.snow@gmail.com",
+            "forename": "John",
+            "surname": "Snow",
+            "phone": "134-567-891",
+            "email": "js@company.com",
+            "position": "Manager",
+            "testEmail": "john.test@gmail.com",
+            "companies": [
+                {
+                    "id": 1,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/1"
+                },
+                {
+                    "id": 2,
+                    "link": "https://www.mailq.quanti.cz/api/v2/companies/2"
+                }
+            ]
+        }
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+# Group Validator
+Notes related resources of the **Validator API**
+
+## Validate Email [/validator/email/{email}]
+Email validation with DNS lookup.
++ Parameters
+    + email (required, string, `ondrej.hrabal@quanti.cz`) ... String `email`.
+    
+
+### Validates email [POST]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 204
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
