@@ -733,6 +733,67 @@ A Newsletter collection with Newsletter object details
 + Response 500
 + Response 503
 
+## /companies/{companyId}/newsletters?code={code}
+
+A single Newsletter object with all its details
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Newsletter to perform action with.
+    + code (required, String, `xxx`) ... String NL `code` of the Newsletter to perform action with.
+       
+### Get a Newsletter [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+            
++ Response 200
+
+        {
+            "id":7,
+            "name":"First newsletter",
+            "code":"xxx",
+            "subject":"První newsletter",
+            "sendAs":"Quanti",
+            "senderEmail":"newsletter@quanti.cz",
+            "status":"ready",
+            "from":"2014-05-13T17:39:34.000",
+            "to":"2014-06-06T16:39:34.000",
+            "text": "Alternative email text",
+            "automaticTime":false,
+            "recipientsListId":null,
+            "campaign":"First campaign",
+            "attachments":[
+                {
+                    "displayName": "Priloha 1",
+                    "link": null,
+                    "mimeType": "text/plain"
+                },
+                {
+                    "displayName": "Priloha 2",
+                    "link": "odkaz na zdroj",
+                    "mimeType": "image/jpeg"
+                }
+            ],
+            "company":{
+                "id":1,
+                "link":"https://www.mailq.quanti.cz/api/v2/companies/1"
+            }
+        }
+     
+
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503 
+
 ## /companies/{companyId}/newsletters/{newsletterId}
 
 A single Newsletter object with all its details
@@ -793,6 +854,7 @@ A single Newsletter object with all its details
 + Response 406
 + Response 500
 + Response 503 
+
 
 ### Update the Newsletter [PUT]
 + Request
