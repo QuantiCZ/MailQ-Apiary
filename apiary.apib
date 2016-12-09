@@ -16,7 +16,7 @@ HOST: https://q.quanti.cz/api/v2
 # Group Campaigns
 Notes related resources of the **Campaigns API**
 
-## Campaign Collection [/companies/{companyId}/campaigns?limit={?limit}&offset={?offset}]
+## /companies/{companyId}/campaigns?limit={?limit}&offset={?offset}
 A Campaign collection with Campaign object details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -83,7 +83,7 @@ A Campaign collection with Campaign object details
 + Response 500
 + Response 503
 
-## Campaign Object [/companies/{companyId}/campaigns/{campaignId}]
+## /companies/{companyId}/campaigns/{campaignId}
 A single Campaign object with all its details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -131,7 +131,7 @@ A single Campaign object with all its details
 # Group Companies
 Notes related resources of the **Companies API**
 
-## Company Object [/companies/{companyId}]
+## /companies/{companyId}
 A single Company object with all its details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -193,7 +193,7 @@ A single Company object with all its details
 + Response 500
 + Response 503
 
-## Company Api key Object [/companies/{companyId}/]
+## /companies/{companyId}/
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
     
@@ -221,7 +221,7 @@ A single Company object with all its details
 + Response 500
 + Response 503
 
-## Multiple global unsubscriber [/companies/{companyId}/unsubscriber?limit={?limit}&offset={?offset}]
+## /companies/{companyId}/unsubscriber?limit={?limit}&offset={?offset}
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
     + limit (optional, number, `100`) ... Numeric `limit` to return limited number of records.
@@ -256,7 +256,7 @@ A single Company object with all its details
 + Response 500
 + Response 503
 
-## Unsubscriber actions [/companies/{companyId}/unsubscribers/actions]
+## /companies/{companyId}/unsubscribers/actions
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
     
@@ -288,7 +288,7 @@ A single Company object with all its details
 + Response 500
 + Response 503
 
-## Multiple global unsubscriber [/companies/{companyId}/unsubscribers?from={?from}&limit={?limit}&offset={?offset}]
+## /companies/{companyId}/unsubscribers?from={?from}&limit={?limit}&offset={?offset}
 
 + Parameters
     + from (required, datetime (ISO 8601), `2014-08-28T17:02:27.761+02:00`) ... Datetime `from` of the last product supplies synchronization.
@@ -346,7 +346,7 @@ A single Company object with all its details
 + Response 500
 + Response 503
 
-## Global unsubscriber [/companies/{companyId}/unsubscribers/{email}?limit={?limit}&offset={?offset}]
+## /companies/{companyId}/unsubscribers/{email}?limit={?limit}&offset={?offset}
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
     + email (required, string, `ondrej.hrabal@quanti.cz`) ... String `email` of the Unsubscriber.
@@ -403,6 +403,7 @@ A single Company object with all its details
 + Response 500
 + Response 503
 
+## /companies/{companyId}/unsubscribers/{email}
 ### Create global unsubscriber [PUT]
 + Request
     + Header
@@ -442,7 +443,7 @@ A single Company object with all its details
 # Group LogMessages
 Notes related resources of the **LogMessages API**
 
-## LogMessage Collection [/companies/{companyId}/log-messages?limit={?limit}&offset={?offset}]
+## /companies/{companyId}/log-messages?limit={?limit}&offset={?offset}
 A LogMessage collection with LogMessage object details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -493,7 +494,7 @@ A LogMessage collection with LogMessage object details
 + Response 500
 + Response 503
 
-## LogMessage types [/companies/{companyId}/log-messages/types]
+## /companies/{companyId}/log-messages/types
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
     
@@ -523,7 +524,7 @@ A LogMessage collection with LogMessage object details
 + Response 500
 + Response 503
 
-## LogMessage Object [/companies/{companyId}/log-messages/{messageId}]
+## /companies/{companyId}/log-messages/{messageId}
 A single LogMessage object with all its details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -563,7 +564,7 @@ A single LogMessage object with all its details
 # Group Newsletters
 Notes related resources of the **Newsletters API**
 
-## Newsletter Collection [/companies/{companyId}/newsletters?limit={?limit}&offset={?offset}]
+## /companies/{companyId}/newsletters?limit={?limit}&offset={?offset}
 
 A Newsletter collection with Newsletter object details
 
@@ -641,6 +642,7 @@ A Newsletter collection with Newsletter object details
 + Response 500
 + Response 503
 
+## /companies/{companyId}/newsletters
 ### Create a Newsletter [POST]
 + Request
     + Header
@@ -694,7 +696,7 @@ A Newsletter collection with Newsletter object details
 + Response 500
 + Response 503
 
-## Newsletter statuses [/companies/{companyId}/newsletters/statuses]
+## /companies/{companyId}/newsletters/statuses
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
     
@@ -730,7 +732,7 @@ A Newsletter collection with Newsletter object details
 + Response 500
 + Response 503
 
-## Newsletter object [/companies/{companyId}/newsletters/{newsletterId}]
+## /companies/{companyId}/newsletters/{newsletterId}
 
 A single Newsletter object with all its details
 
@@ -859,7 +861,7 @@ A single Newsletter object with all its details
 + Response 500
 + Response 503
 
-## Newsletter preparation [/companies/{companyId}/newsletters/{newsletterId}/preparation]
+## /companies/{companyId}/newsletters/{newsletterId}/preparation
 
 Resource to starting and stoping newsletter preparation
 
@@ -892,7 +894,7 @@ Resource to starting and stoping newsletter preparation
 + Response 500
 + Response 503
 
-## Newsletter testing email [/companies/{companyId}/newsletters/{newsletterId}/test-email]
+## /companies/{companyId}/newsletters/{newsletterId}/test-email
 
 Resource of newsletter testing e-mail
 
@@ -925,7 +927,7 @@ Resource of newsletter testing e-mail
 + Response 500
 + Response 503
 
-<!-- ## Newsletter statistics [/companies/{companyId}/newsletters/{newsletterId}/statistics]
+<!-- ## /companies/{companyId}/newsletters/{newsletterId}/statistics
 
 Resource of newsletter statistics
 
@@ -965,7 +967,7 @@ Resource of newsletter statistics
 # Group SMS newsletters
 Notes related resources of the **SMS newsletters API**
 
-## SMS newsletter Collection [/companies/{companyId}/sms-newsletters?limit={?limit}&offset={?offset}]
+## /companies/{companyId}/sms-newsletters?limit={?limit}&offset={?offset}
 
 A SMS newsletter collection with SMS newsletter object details
 
@@ -1026,6 +1028,7 @@ A SMS newsletter collection with SMS newsletter object details
 + Response 500
 + Response 503
 
+## /companies/{companyId}/sms-newsletters
 ### Create a SMS newsletter [POST]
 + Request
     + Header
@@ -1059,7 +1062,7 @@ A SMS newsletter collection with SMS newsletter object details
 + Response 500
 + Response 503
 
-## SMS newsletter statuses [/companies/{companyId}/sms-newsletters/statuses]
+## /companies/{companyId}/sms-newsletters/statuses
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
     
@@ -1094,7 +1097,7 @@ A SMS newsletter collection with SMS newsletter object details
 + Response 500
 + Response 503
 
-## SMS newsletter object [/companies/{companyId}/sms-newsletters/{smsNewsletterId}]
+## /companies/{companyId}/sms-newsletters/{smsNewsletterId}
 
 A single Newsletter object with all its details
 
@@ -1188,7 +1191,7 @@ A single Newsletter object with all its details
 + Response 500
 + Response 503
 
-## SMS newsletter preparation [/companies/{companyId}/sms-newsletters/{smsNewsletterId}/preparation]
+## /companies/{companyId}/sms-newsletters/{smsNewsletterId}/preparation
 
 Resource to starting and stoping SMS newsletter preparation
 
@@ -1221,7 +1224,7 @@ Resource to starting and stoping SMS newsletter preparation
 + Response 500
 + Response 503
 
-## SMS newsletter testing sms [/companies/{companyId}/sms-newsletters/{smsNewsletterId}/test-sms]
+## /companies/{companyId}/sms-newsletters/{smsNewsletterId}/test-sms
 
 Resource of newsletter testing sms
 
@@ -1257,7 +1260,7 @@ Resource of newsletter testing sms
 # Group Notifications
 Notes related resources of the **Notifications API**
 
-## Notifications Collection [/companies/{companyId}/notifications?limit={?limit}&offset={?offset}]
+## /companies/{companyId}/notifications?limit={?limit}&offset={?offset}
 A Notifications collection with Notification object details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Notification to perform action with.
@@ -1316,6 +1319,7 @@ A Notifications collection with Notification object details
 + Response 500
 + Response 503
 
+## /companies/{companyId}/notifications
 ### Create a Notification [POST]
 + Request
     + Header
@@ -1351,7 +1355,7 @@ A Notifications collection with Notification object details
 + Response 500
 + Response 503
 
-## Notification statuses [/companies/{companyId}/notifications/statuses]
+## /companies/{companyId}/notifications/statuses
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
     
@@ -1381,7 +1385,7 @@ A Notifications collection with Notification object details
 + Response 500
 + Response 503
 
-## Notification Object [/companies/{companyId}/notifications/{notificationId}]
+## /companies/{companyId}/notifications/{notificationId}
 A single Notification object with all its details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -1472,7 +1476,7 @@ A single Notification object with all its details
 + Response 500
 + Response 503
 
-## NotificationData Collection [/companies/{companyId}/notifications/{notificationId}/history/{email}?limit={?limit}&offset={?offset}]
+## /companies/{companyId}/notifications/{notificationId}/history/{email}?limit={?limit}&offset={?offset}
 A NotificationData collection with NotificationData object details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -1555,7 +1559,7 @@ A NotificationData collection with NotificationData object details
 + Response 500
 + Response 503
 
-## NotificationData Object [/companies/{companyId}/notifications/{notificationId}/data/{notificationDataId}]
+## /companies/{companyId}/notifications/{notificationId}/data/{notificationDataId}
 A single NotificationData object with all its details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -1608,7 +1612,7 @@ A single NotificationData object with all its details
 + Response 500
 + Response 503
 
-## NotificationData Object [/companies/{companyId}/notifications/{notificationId}/data/]
+## /companies/{companyId}/notifications/{notificationId}/data/
 A single NotificationData object with all its details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -1673,7 +1677,7 @@ A single NotificationData object with all its details
 
 # Group SMS-Notifications
 
-## SMS-Notifications Collection [/companies/{companyId}/sms-notifications?limit={?limit}&offset={?offset}]
+## /companies/{companyId}/sms-notifications?limit={?limit}&offset={?offset}
 A SMS-Notifications collection with SMS-Notification object details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Notification to perform action with.
@@ -1724,6 +1728,7 @@ A SMS-Notifications collection with SMS-Notification object details
 + Response 500
 + Response 503
 
+## /companies/{companyId}/sms-notifications
 ### Create a SMS-Notification [POST]
 + Request
     + Header
@@ -1755,7 +1760,7 @@ A SMS-Notifications collection with SMS-Notification object details
 + Response 500
 + Response 503
 
-## SMS-Notification statuses [/companies/{companyId}/sms-notifications/statuses]
+## /companies/{companyId}/sms-notifications/statuses
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
     
@@ -1785,7 +1790,7 @@ A SMS-Notifications collection with SMS-Notification object details
 + Response 500
 + Response 503
 
-## SMS-Notification Object [/companies/{companyId}/sms-notifications/{smsNotificationId}]
+## /companies/{companyId}/sms-notifications/{smsNotificationId}
 A single SMS-Notification object with all its details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -1868,7 +1873,7 @@ A single SMS-Notification object with all its details
 + Response 500
 + Response 503
 
-## SMS-NotificationData Object [/companies/{companyId}/sms-notifications/{smsNotificationId}/data]
+## /companies/{companyId}/sms-notifications/{smsNotificationId}/data
 
 Error codes
 
@@ -1942,7 +1947,7 @@ Create SMS by template
 + Response 500
 + Response 503
 
-## SMS-NotificationData Object [/companies/{companyId}/sms-notifications/{smsNotificationId}/batch/data]
+## /companies/{companyId}/sms-notifications/{smsNotificationId}/batch/data
 
 Error codes
 
@@ -2035,7 +2040,7 @@ Create batch of SMS by template. Maximum SMS in one batch is 100.
 + Response 500
 + Response 503
 
-## SMS-NotificationData Object [/companies/{companyId}/sms-notifications/{smsNotificationId}/data/{smsNotificationDataId}]
+## /companies/{companyId}/sms-notifications/{smsNotificationId}/data/{smsNotificationDataId}
 A single NotificationData object with all its details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -2076,7 +2081,7 @@ A single NotificationData object with all its details
 # Group RecipientsList
 Notes related resources of the **RecipientsList API**
 
-## RecipientsList Collection [/companies/{companyId}/recipients-lists/?email={email}&limit={?limit}&offset={?offset}]
+## /companies/{companyId}/recipients-lists/?email={email}&limit={?limit}&offset={?offset}
 A RecipientsList collection with RecipientsList object details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -2142,7 +2147,7 @@ A RecipientsList collection with RecipientsList object details
 + Response 500
 + Response 503
 
-## RecipientsList Collection [/companies/{companyId}/recipients-lists]
+## /companies/{companyId}/recipients-lists
 A RecipientsList collection with RecipientsList object details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -2179,7 +2184,7 @@ A RecipientsList collection with RecipientsList object details
 + Response 503
 
 
-## RecipientsList Object [/companies/{companyId}/recipients-lists/{recipientsListId}]
+## /companies/{companyId}/recipients-lists/{recipientsListId}
 A single RecipientsList object with all its details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -2240,7 +2245,30 @@ A single RecipientsList object with all its details
 + Response 500
 + Response 503
 
-## Multiple recipients [/companies/{companyId}/recipients-lists/{recipientsListId}/recipients/?dont-validate={dontValidate}]
+## /companies/{companyId}/recipients-lists/{recipientsListId}?complete{?complete}
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + recipientsListId (required, number, `1`) ... Numeric `recipientsListId` of the RecipientsList to perform action with.
+    + complete (required, boolean, `true`) ... Boolean `complete` to delete also all recipients.
+
+### Deletes an RecipientsList with all recipients [DELETE]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 204 (application/json)
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## /companies/{companyId}/recipients-lists/{recipientsListId}/recipients/?dont-validate={dontValidate}
 Creating multiple recipients at once
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -2283,7 +2311,7 @@ Creating multiple recipients at once
 + Response 500
 + Response 503
 
-## Recipients [/companies/{companyId}/recipients-lists/{recipientsListId}/recipients?limit={?limit}&offset={?offset}]
+## /companies/{companyId}/recipients-lists/{recipientsListId}/recipients?limit={?limit}&offset={?offset}
 A Recipients collection of the RecipientsList with Recipients object details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -2326,7 +2354,7 @@ A Recipients collection of the RecipientsList with Recipients object details
 + Response 500
 + Response 503
 
-## Recipient [/companies/{companyId}/recipients-lists/{recipientsListId}/recipients/{email}/?dont-validate={dontValidate}]
+## /companies/{companyId}/recipients-lists/{recipientsListId}/recipients/{email}/?dont-validate={dontValidate}
 A single Recipient object
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -2377,7 +2405,7 @@ A single Recipient object
 + Response 500
 + Response 503
 
-## Multiple unsubscribers [/companies/{companyId}/recipients-lists/{recipientsListId}/unsubscribers?limit={?limit}&offset={?offset}]
+## /companies/{companyId}/recipients-lists/{recipientsListId}/unsubscribers?limit={?limit}&offset={?offset}
 Creating multiple unsubscribers at once
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -2435,7 +2463,7 @@ Creating multiple unsubscribers at once
 + Response 500
 + Response 503
 
-
+## /companies/{companyId}/recipients-lists/{recipientsListId}/unsubscribers
 ### Create an unsubscriber [POST]
 + Request
     + Header
@@ -2464,7 +2492,7 @@ Creating multiple unsubscribers at once
 + Response 500
 + Response 503
 
-## Unsubscriber [/companies/{companyId}/recipients-lists/{recipientsListId}/unsubscribers/{email}]
+## /companies/{companyId}/recipients-lists/{recipientsListId}/unsubscribers/{email}
 Single Unsubscriber object
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -2542,7 +2570,7 @@ Single Unsubscriber object
 # Group SenderEmails
 Notes related resources of the **SenderEmails API**
 
-## SenderEmail Collection [/companies/{companyId}/sender-emails]
+## /companies/{companyId}/sender-emails
 A SenderEmail collection with SenderEmail object details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -2585,7 +2613,7 @@ A SenderEmail collection with SenderEmail object details
 + Response 500
 + Response 503
 
-## SenderEmail Object [/companies/{companyId}/sender-emails/{senderEmailId}]
+## /companies/{companyId}/sender-emails/{senderEmailId}
 A single SenderEmail object with all its details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -2622,7 +2650,7 @@ A single SenderEmail object with all its details
 # Group Users
 Notes related resources of the **Users API**
 
-## User Collection [/companies/{companyId}/users]
+## /companies/{companyId}/users
 A User collection with User object details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -2689,7 +2717,7 @@ A User collection with User object details
 + Response 500
 + Response 503
 
-## User Object [/companies/{companyId}/users/{userId}]
+## /companies/{companyId}/users/{userId}
 A single User object with all its details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
@@ -2738,7 +2766,7 @@ A single User object with all its details
 # Group Validator
 Notes related resources of the **Validator API**
 
-## Validate Email [/validator/email/{email}]
+## /validator/email/{email}
 Email validation with DNS lookup.
 + Parameters
     + email (required, string, `ondrej.hrabal@quanti.cz`) ... String `email`.
