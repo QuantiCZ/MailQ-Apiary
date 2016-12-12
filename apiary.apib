@@ -609,7 +609,12 @@ A Newsletter collection with Newsletter object details
                             "link": "odkaz na zdroj",
                             "mimeType": "image/jpeg"
                         }
-                    ],
+                  ],
+                  "tags": [
+                        {
+                            "name": "Special action"
+                        }
+                  ],
                   "company":{
                      "id":1,
                      "link":"https://www.mailq.quanti.cz/api/v2/companies/1"
@@ -669,19 +674,24 @@ A Newsletter collection with Newsletter object details
                  "unsubscribeTemplateUrl" : "http://mailq.cz/unsubscribe.html",
                  "csvUrl" : "http://mailq.cz/emails-csv.csv",
                  "attachments":[
-                        {
-                            "displayName": "Priloha 1",
-                            "link": null,
-                            "source": "base64text",
-                            "mimeType": "text/plain"
-                        },
-                        {
-                            "displayName": "Priloha 2",
-                            "link": "odkaz na zdroj",
-                            "source": "base64text",
-                            "mimeType": "image/jpeg"
-                        }
-                    ]
+                    {
+                        "displayName": "Priloha 1",
+                        "link": null,
+                        "source": "base64text",
+                        "mimeType": "text/plain"
+                    },
+                    {
+                        "displayName": "Priloha 2",
+                        "link": "odkaz na zdroj",
+                        "source": "base64text",
+                        "mimeType": "image/jpeg"
+                    }
+                ],
+                "tags": [
+                    {
+                        "name": "Special action"
+                    }
+                ]
             }
             
 + Response 201
@@ -692,6 +702,38 @@ A Newsletter collection with Newsletter object details
 + Response 400
 + Response 401  
 + Response 403
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## /companies/{companyId}/newsletters/tags
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    
+### Gets newsletter list of existing tags [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+        [
+            { 
+                "name": "Daily" 
+            },
+            { 
+                "name": "Special action" 
+            }
+        ]
+
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
 + Response 405
 + Response 406
 + Response 500
@@ -778,6 +820,11 @@ A single Newsletter object with all its details
                     "mimeType": "image/jpeg"
                 }
             ],
+            "tags": [
+                {
+                    "name": "Special action"
+                }
+            ],
             "company":{
                 "id":1,
                 "link":"https://www.mailq.quanti.cz/api/v2/companies/1"
@@ -839,6 +886,11 @@ A single Newsletter object with all its details
                     "mimeType": "image/jpeg"
                 }
             ],
+            "tags": [
+                {
+                    "name": "Special action"
+                }
+            ],
             "company":{
                 "id":1,
                 "link":"https://www.mailq.quanti.cz/api/v2/companies/1"
@@ -881,19 +933,24 @@ A single Newsletter object with all its details
                  "unsubscribeTemplateUrl" : "http://mailq.cz/unsubscribe.html",
                  "csvUrl" : "http://mailq.cz/emails-csv.csv",
                  "attachments":[
-                        {
-                            "displayName": "Priloha 1",
-                            "link": null,
-                            "source": "base64text",
-                            "mimeType": "text/plain"
-                        },
-                        {
-                            "displayName": "Priloha 2",
-                            "link": "odkaz na zdroj",
-                            "source": "base64text",
-                            "mimeType": "image/jpeg"
-                        }
-                    ]
+                    {
+                        "displayName": "Priloha 1",
+                        "link": null,
+                        "source": "base64text",
+                        "mimeType": "text/plain"
+                    },
+                    {
+                        "displayName": "Priloha 2",
+                        "link": "odkaz na zdroj",
+                        "source": "base64text",
+                        "mimeType": "image/jpeg"
+                    }
+                ],
+                "tags": [
+                    {
+                        "name": "Special action"
+                    }
+                ],
             }
             
 + Response 204
