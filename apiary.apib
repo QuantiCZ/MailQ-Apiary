@@ -1335,17 +1335,28 @@ Resource to starting and stoping SMS newsletter preparation
     
 
 ### Update preparation status of a SMS newsletter [PUT]
-+ Request
++ Request (application/json)
     + Header
 
             X-Api-Key: Company Api Key
             Accept: application/json
-            Content-type: application/json
     
     + Body
     
             {
                  "start": true
+            }
+
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json            
+    + Body
+    
+            {
+                 "stop": true
             }
             
 + Response 204
@@ -2437,7 +2448,7 @@ Creating multiple recipients at once
             ]
             
 + Response 204
-+ Response 401  
++ Response 401
 + Response 403
 + Response 404
 + Response 405
@@ -2467,7 +2478,6 @@ A Recipients collection of the RecipientsList with Recipients object details
           {
             "email": "first-recipient@company.com",
             "data": {
-              "email": "first-recipient@company.com",
               "salutation": "Test Ondro",
               "code": "zxxx"
             }
@@ -2475,7 +2485,6 @@ A Recipients collection of the RecipientsList with Recipients object details
           {
             "email": "second-recipient@company.com",
             "data": {
-              "email": "second-recipient@company.com",
               "salutation": " Test Martina",
               "code": "aaa"
             }
