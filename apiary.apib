@@ -994,17 +994,28 @@ Resource to starting and stoping newsletter preparation
     
 
 ### Update preparation status of the Newsletter [PUT]
-+ Request
++ Request (application/json)
     + Header
 
             X-Api-Key: Company Api Key
             Accept: application/json
-            Content-type: application/json
     
     + Body
     
             {
                  "start": true
+            }
+
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json            
+    + Body
+    
+            {
+                 "stop": true
             }
             
 + Response 204
