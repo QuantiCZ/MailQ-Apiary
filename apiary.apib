@@ -2,7 +2,7 @@ FORMAT: 1A
 HOST: https://q.quanti.cz/api/v2
 
 # Mailing V2 Resources
-**Mailing** is the **Quanti Ltd** web application project for sending newsletters and notification emails.
+**Mailing** is the **Quanti s.r.o.** web application project for sending newsletters and notification emails.
 
 * Data are taken and provided only in the format **application/json**! 
 * If an error occurs, the API returns the error description and sets the **HTTP (4xx) code**. 
@@ -12,7 +12,7 @@ HOST: https://q.quanti.cz/api/v2
 * Each request (except authentication) must be sent with the **X-Api-Key header**. For getting the value for your company, please, contact support@mailq.cz
 * DateTimes are specified in the **ISO 8601** format.
 * Use only the **UTF-8** encoding.
-* GET requests returning collection of objects supports pagination. Maximum **number of returned results is set by default to 100**, **default offset is set to 0**.
+* GET requests returning collection of objects supports pagination using the **limit** and the **offset** query parameters. Maximum **number of returned results is set by default to 100**, **default offset is set to 0**.
 
 # Group Campaigns
 Notes related resources of the **Campaigns API**
