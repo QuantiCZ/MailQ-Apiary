@@ -2550,7 +2550,7 @@ A single Recipient object
 + Response 503
 
 ## /companies/{companyId}/recipients-lists/{recipientsListId}/unsubscribers?limit={?limit}&offset={?offset}
-Creating multiple unsubscribers at once
+Recipients list unsubscribers
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
     + recipientsListId (required, number, `1`) ... Numeric `recipientsListId` of the RecipientsList to perform action with.
@@ -2558,7 +2558,7 @@ Creating multiple unsubscribers at once
     + offset (optional, number, `0`) ... Numeric `offset` from which record in order to start, **default value is set to 0**.
     
 
-### GET an unsubscriber [GET]
+### GET all recipients list unsubscribers [GET]
 + Request
     + Header
 
@@ -2608,7 +2608,9 @@ Creating multiple unsubscribers at once
 + Response 503
 
 ## /companies/{companyId}/recipients-lists/{recipientsListId}/unsubscribers
-### Create an unsubscriber [POST]
+Creating multiple Recipients List Unsubscribers at once
+
+### Create multiple recipients list unsubscribers [POST]
 + Request
     + Header
 
@@ -2637,14 +2639,14 @@ Creating multiple unsubscribers at once
 + Response 503
 
 ## /companies/{companyId}/recipients-lists/{recipientsListId}/unsubscribers/{email}
-Single Unsubscriber object
+Single Recipients List Unsubscriber object
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
     + recipientsListId (required, number, `1`) ... Numeric `recipientsListId` of the RecipientsList to perform action with.
     + email (required, string, `email@example.org`) ... String `email` of the Unsubscriber
     
 
-### GET an unsubscribers [GET]
+### GET the recipients list unsubscriber [GET]
 + Request
     + Header
 
@@ -2677,7 +2679,7 @@ Single Unsubscriber object
 + Response 406
 + Response 500
 
-### Create/Update an unsubscriber [PUT]
+### Create/Update the recipients list unsubscriber [PUT]
 + Request
     + Header
 
@@ -2694,7 +2696,7 @@ Single Unsubscriber object
 + Response 500
 + Response 503
 
-### Delete an unsubscriber [DELETE]
+### Delete the recipients list unsubscriber [DELETE]
 + Request
     + Header
 
