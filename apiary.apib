@@ -39,7 +39,7 @@ A Campaign collection with Campaign object details
             {
                 "id": 1, 
                 "name": "First campaign",
-                "created": "2014-05-04T11:51:31.000+02:00",
+                "created": "2014-05-04T11:51:31+02:00",
                 "company": {
                     "id": 1,
                     "link": "https://www.mailq.cz/api/v2/companies/1"
@@ -58,7 +58,7 @@ A Campaign collection with Campaign object details
             {
                 "id": 2, 
                 "name": "Second campaign",
-                "created": "2014-05-04T11:51:31.000+02:00",
+                "created": "2014-05-04T11:51:31+02:00",
                 "company": {
                     "id": 1,
                     "link": "https://www.mailq.cz/api/v2/companies/1"
@@ -104,7 +104,7 @@ A single Campaign object with all its details
         {
             "id": 1, 
             "name": "First campaign",
-            "created": "2014-05-04T11:51:31.000+02:00",
+            "created": "2014-05-04T11:51:31+02:00",
             "company": {
                 "id": 1,
                 "link": "https://www.mailq.cz/api/v2/companies/1"
@@ -466,7 +466,7 @@ A LogMessage collection with LogMessage object details
                 "title": "First message",
                 "text": "Content of the first message.",
                 "type": "SYSTEM"
-                "created": "2014-05-04T13:00:35.000+02:00"
+                "created": "2014-05-04T13:00:35+02:00"
                 "company": {
                     "id": 1,
                     "link": "https://www.mailq.cz/api/v2/companies/1"
@@ -477,7 +477,7 @@ A LogMessage collection with LogMessage object details
                 "title": "Second message",
                 "text": "Content of the second message.",
                 "type": "SYSTEM",
-                "created": "2014-05-04T13:00:20.000+02:00",
+                "created": "2014-05-04T13:00:20+02:00",
                 "company": {
                     "id": 1,
                     "link": "https://www.mailq.cz/api/v2/companies/1"
@@ -545,7 +545,7 @@ A single LogMessage object with all its details
             "title": "First message",
             "text": "Content of the first message.",
             "type": "SYSTEM",
-            "created": "2014-05-04T13:00:35.000+02:00",
+            "created": "2014-05-04T13:00:35+02:00",
             "company": {
                 "id": 1,
                 "link": "https://www.mailq.cz/api/v2/companies/1"
@@ -592,8 +592,8 @@ A Newsletter collection with Newsletter object details
                   "sendAs":"MailQ",
                   "senderEmail":"newsletter@mailq.cz",
                   "status":"ready",
-                  "from":"2014-06-04T16:34:00.000",
-                  "to":"9999-12-31T16:41:30.009",
+                  "from":"2014-05-04T11:51:31+02:00",
+                  "to":"9999-12-31T16:41:30+02:00",
                   "automaticTime":false,
                   "recipientsListId":1,
                   "campaign":"First campaign",
@@ -628,8 +628,8 @@ A Newsletter collection with Newsletter object details
                   "sendAs":"MailQ",
                   "senderEmail":"newsletter@mailq.cz",
                   "status":"ready",
-                  "from":"2014-05-13T17:39:34.000",
-                  "to":"2014-06-06T16:39:34.000",
+                  "from":"2014-05-04T11:51:31+02:00",
+                  "to":"2014-06-06T16:39:34+02:00",
                   "automaticTime":false,
                   "recipientsListId":null,
                   "campaign":"First campaign",
@@ -664,8 +664,8 @@ A Newsletter collection with Newsletter object details
                  "subject" : "Dárek",
                  "senderEmail" : "info@firma.cz",
                  "sendAs" : "Perfektní firma",
-                 "from" : "2014-06-12T06:00:00.000",
-                 "to" : "2014-06-19T06:00:00.000",
+                 "from":"2014-05-04T11:51:31+02:00",
+                 "to":"2014-06-06T16:39:34+02:00",
                  "text": "Alternative base64 email text",
                  "code": "e4227d37-8c46-405a-aa1a-45aa2bfe03f5",
                  "automaticTime": false,
@@ -804,8 +804,8 @@ A single Newsletter object with all its details
             "sendAs":"MailQ",
             "senderEmail":"newsletter@mailq.cz",
             "status":"ready",
-            "from":"2014-05-13T17:39:34.000",
-            "to":"2014-06-06T16:39:34.000",
+            "from":"2014-05-04T11:51:31+02:00",
+            "to":"2014-06-06T16:39:34+02:00",
             "text": "Alternative email text",
             "automaticTime":false,
             "recipientsListId":null,
@@ -871,8 +871,8 @@ A single Newsletter object with all its details
             "sendAs":"MailQ",
             "senderEmail":"newsletter@mailq.cz",
             "status":"ready",
-            "from":"2014-05-13T17:39:34.000",
-            "to":"2014-06-06T16:39:34.000",
+            "from":"2014-05-04T11:51:31+02:00",
+            "to":"2014-06-06T16:39:34+02:00",
             "text": "Alternative email text",
             "automaticTime":false,
             "recipientsListId":null,
@@ -928,8 +928,8 @@ A single Newsletter object with all its details
                  "subject" : "Dárek",
                  "senderEmail" : "info@firma.cz",
                  "sendAs" : "Perfektní firma",
-                 "from" : "2014-06-12T06:00:00.000",
-                 "to" : "2014-06-19T06:00:00.000",
+                 "from":"2014-05-04T11:51:31+02:00",
+                 "to":"2014-06-06T16:39:34+02:00",
                  "text": "Alternative base64 email text",
                  "automaticTime": false,
                  "recipientsListId": 25,
@@ -1062,9 +1062,11 @@ Resource of newsletter testing e-mail
 + Response 500
 + Response 503
 
-<!-- ## /companies/{companyId}/newsletters/{newsletterId}/statistics
+## /companies/{companyId}/newsletters/{newsletterId}/statistics
 
 Resource of newsletter statistics
+
+**NOTE: This resource is available so far only in test environment. Production environment wil follow.**
 
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Newsletter to perform action with.
@@ -1097,7 +1099,168 @@ Resource of newsletter statistics
 + Response 406
 + Response 500
 + Response 503
--->
+
+## /companies/{companyId}/newsletters/{newsletterId}/opened-emails
+
+Resource of newsletter opened emails statistics
+
+**NOTE: This resource is available so far only in test environment. Production environment wil follow.**
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Newsletter to perform action with.
+    + newsletterId (required, number, `1`) ... Numeric `newsletterId` of the Newsletter to perform action with.
+    
+
+### Get the Newsletter opened emails statistics [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200
+    
+            [
+                {
+                     "email": "info@firma.cz",
+                     "openedTimestamp": "2014-06-06T16:39:34+02:00"
+                },
+                {
+                     "email": "newsletter@mailq.cz",
+                     "openedTimestamp": "2014-06-06T16:39:34+02:00"
+                }
+            ]
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## /companies/{companyId}/newsletters/{newsletterId}/unsubscribed-emails
+
+Resource of newsletter unsubscribed emails statistics
+
+**NOTE: This resource is available so far only in test environment. Production environment wil follow.**
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Newsletter to perform action with.
+    + newsletterId (required, number, `1`) ... Numeric `newsletterId` of the Newsletter to perform action with.
+    
+
+### Get the Newsletter unsubscribed emails statistics [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200
+    
+            [
+                {
+                     "email": "info@firma.cz",
+                     "unsubscribedTimestamp": "2014-06-06T16:39:34+02:00"
+                },
+                {
+                     "email": "newsletter@mailq.cz",
+                     "unsubscribedTimestamp": "2014-06-06T16:39:34+02:00"
+                }
+            ]
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## /companies/{companyId}/newsletters/{newsletterId}/unsent-emails
+
+Resource of newsletter unsent emails statistics
+
+**NOTE: This resource is available so far only in test environment. Production environment wil follow.**
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Newsletter to perform action with.
+    + newsletterId (required, number, `1`) ... Numeric `newsletterId` of the Newsletter to perform action with.
+    
+
+### Get the Newsletter unsent emails statistics [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200
+    
+            [
+                {
+                     "email": "info@firma.cz",
+                     "reason": "INVALID_ADDRESS"
+                },
+                {
+                     "email": "newsletter@mailq.cz",
+                     "reason": "UNRESOLVED_MX"
+                }
+            ]
+            
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## /companies/{companyId}/newsletters/{newsletterId}/undelivered-emails
+
+Resource of newsletter undelivered emails statistics
+
+**NOTE: This resource is available so far only in test environment. Production environment wil follow.**
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Newsletter to perform action with.
+    + newsletterId (required, number, `1`) ... Numeric `newsletterId` of the Newsletter to perform action with.
+    
+
+### Get the Newsletter undelivered emails statistics [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200
+    
+            [
+                {
+                     "email": "info@firma.cz",
+                     "reason": "DEFERRED"
+                },
+                {
+                     "email": "newsletter@mailq.cz",
+                     "reason": "ERROR"
+                }
+            ]
+            
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
 
 # Group SMS newsletters
 Notes related resources of the **SMS newsletters API**
@@ -1129,8 +1292,8 @@ A SMS newsletter collection with SMS newsletter object details
                   "code":null,
                   "status":"ready",
                   "text": "SMS message text",
-                  "from":"2014-06-04T16:34:00.000",
-                  "to":"9999-12-31T16:41:30.009",
+                  "from":"2014-05-04T11:51:31+02:00",
+                  "to":"2014-06-06T16:39:34+02:00",
                   "recipientsListId":1,
                   "campaign":"First campaign",
                   "company":{
@@ -1144,8 +1307,8 @@ A SMS newsletter collection with SMS newsletter object details
                   "code":"xxx",
                   "status":"ready",
                   "text": "SMS message text",
-                  "from":"2014-05-13T17:39:34.000",
-                  "to":"2014-06-06T16:39:34.000",
+                  "from":"2014-05-04T11:51:31+02:00",
+                  "to":"2014-06-06T16:39:34+02:00",
                   "recipientsListId":null,
                   "csvUrl": "http://192.168.65.142/mailq/phones.csv",
                   "campaign":"First campaign",
@@ -1178,8 +1341,8 @@ A SMS newsletter collection with SMS newsletter object details
                  "name": "Můj API newsletter",
                  "campaign": "Kampaň",
                  "code": "xxx",
-                 "from": "2014-06-12T06:00:00.000",
-                 "to": "2014-06-19T06:00:00.000",
+                 "from":"2014-05-04T11:51:31+02:00",
+                 "to":"2014-06-06T16:39:34+02:00",
                  "text": "SMS message text",
                  "csvUrl": "http://192.168.65.142/mailq/phones.csv"
             }
@@ -1256,8 +1419,8 @@ A single Newsletter object with all its details
             "name":"First SMS newsletter",
             "code": "xxx",
             "status":"ready",
-            "from":"2014-05-13T17:39:34.000",
-            "to":"2014-06-06T16:39:34.000",
+            "from":"2014-05-04T11:51:31+02:00",
+            "to":"2014-06-06T16:39:34+02:00",
             "text": "SMS message text",
             "csvUrl": "http://192.168.65.142/mailq/phones.csv",
             "recipientsListId":null,
@@ -1292,8 +1455,8 @@ A single Newsletter object with all its details
                  "name": "Můj API newsletter",
                  "campaign": "Kampaň",
                  "code": "xxx",
-                 "from": "2014-06-12T06:00:00.000",
-                 "to": "2014-06-19T06:00:00.000",
+                 "from":"2014-05-04T11:51:31+02:00",
+                 "to":"2014-06-06T16:39:34+02:00",
                  "text": "SMS message text",
                  "recipientsListId": 25
             }
@@ -1780,7 +1943,7 @@ A single NotificationData object with all its details
                     "hrabalo@seznam.cz",
                     "ondra.hrabal@gmail.com"
                 ],
-                "dateFrom": "2014-06-19T06:00:00.000",
+                "dateFrom": "2014-06-19T06:00:00+02:00",
                 "data": {
                     "key1": "value1", 
                     "key2": "value2"
@@ -2241,8 +2404,8 @@ A RecipientsList collection with RecipientsList object details
             {
               "id":1,
               "name":"First Recipients List",
-              "created": "Mon May 23 11:29:18 CEST 2016",
-              "updated": "Mon May 23 11:29:29 CEST 2016",
+              "created": "2014-05-04T11:51:31+02:00",
+              "updated": "2014-05-04T11:51:31+02:00",
               "recipients":0,
               "unsubscribers":0,
               "formVisible": true,
@@ -2259,8 +2422,8 @@ A RecipientsList collection with RecipientsList object details
            {
               "id":2,
               "name":"Second Recipients List",
-              "created": "Mon May 23 11:29:18 CEST 2016",
-              "updated": "Mon May 23 11:29:29 CEST 2016",
+              "created": "2014-05-04T11:51:31+02:00",
+              "updated": "2014-05-04T11:51:31+02:00",
               "recipients":0,
               "unsubscribers":0,
               "formVisible": false,
@@ -2341,8 +2504,8 @@ A single RecipientsList object with all its details
         {
               "id":1,
               "name":"First Recipients List",
-              "created": "Mon May 23 11:29:18 CEST 2016",
-              "updated": "Mon May 23 11:29:29 CEST 2016",
+              "created": "2014-05-04T11:51:31+02:00",
+              "updated": "2014-05-04T11:51:31+02:00",
               "recipients":0,
               "unsubscribers":0,
               "formVisible": true,
