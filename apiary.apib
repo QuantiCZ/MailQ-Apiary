@@ -592,6 +592,7 @@ A Newsletter collection with Newsletter object details
                   "subject":"X12",
                   "sendAs":"MailQ",
                   "senderEmail":"newsletter@mailq.cz",
+                  "replyToEmail" : "info@firma.cz",
                   "status":"ready",
                   "from":"2014-05-04T11:51:31+02:00",
                   "to":"9999-12-31T16:41:30+02:00",
@@ -628,6 +629,7 @@ A Newsletter collection with Newsletter object details
                   "subject":"První newsletter",
                   "sendAs":"MailQ",
                   "senderEmail":"newsletter@mailq.cz",
+                  "replyToEmail" : "info@firma.cz",
                   "status":"ready",
                   "from":"2014-05-04T11:51:31+02:00",
                   "to":"2014-06-06T16:39:34+02:00",
@@ -664,6 +666,7 @@ A Newsletter collection with Newsletter object details
                  "campaign": "Kampaň",
                  "subject" : "Dárek",
                  "senderEmail" : "info@firma.cz",
+                 "replyToEmail" : "info@firma.cz",
                  "sendAs" : "Perfektní firma",
                  "from":"2014-05-04T11:51:31+02:00",
                  "to":"2014-06-06T16:39:34+02:00",
@@ -785,7 +788,7 @@ A single Newsletter object with all its details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Newsletter to perform action with.
     + code (required, String, `xxx`) ... Stringd `code` of the Newsletter to perform action with.
-       
+ 
 ### Get a Newsletter [GET]
 + Request
     + Header
@@ -804,6 +807,7 @@ A single Newsletter object with all its details
             "subject":"První newsletter",
             "sendAs":"MailQ",
             "senderEmail":"newsletter@mailq.cz",
+            "replyToEmail" : "info@firma.cz",
             "status":"ready",
             "from":"2014-05-04T11:51:31+02:00",
             "to":"2014-06-06T16:39:34+02:00",
@@ -852,7 +856,7 @@ A single Newsletter object with all its details
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Newsletter to perform action with.
     + newsletterId (required, number, `1`) ... Numeric `newsletterId` of the Newsletter to perform action with.
-   
+
 ### Get a Newsletter [GET]
 + Request
     + Header
@@ -871,6 +875,7 @@ A single Newsletter object with all its details
             "subject":"První newsletter",
             "sendAs":"MailQ",
             "senderEmail":"newsletter@mailq.cz",
+            "replyToEmail" : "info@firma.cz",
             "status":"ready",
             "from":"2014-05-04T11:51:31+02:00",
             "to":"2014-06-06T16:39:34+02:00",
@@ -928,6 +933,7 @@ A single Newsletter object with all its details
                  "campaign": "Kampaň",
                  "subject" : "Dárek",
                  "senderEmail" : "info@firma.cz",
+                 "replyToEmail" : "info@firma.cz",
                  "sendAs" : "Perfektní firma",
                  "from":"2014-05-04T11:51:31+02:00",
                  "to":"2014-06-06T16:39:34+02:00",
@@ -1081,7 +1087,7 @@ Resource of newsletter statistics
             Content-type: application/json
             
 + Response 200
-    
+
             {
                  "recipients": 10,
                  "sent": 9,
@@ -1117,7 +1123,7 @@ Resource of newsletter opened emails statistics
             Content-type: application/json
             
 + Response 200
-    
+
             [
                 {
                      "email": "info@firma.cz",
@@ -1155,7 +1161,7 @@ Resource of newsletter unsubscribed emails statistics
             Content-type: application/json
             
 + Response 200
-    
+
             [
                 {
                      "email": "info@firma.cz",
@@ -1193,7 +1199,7 @@ Resource of newsletter unsent emails statistics
             Content-type: application/json
             
 + Response 200
-    
+
             [
                 {
                      "email": "info@firma.cz",
@@ -1232,7 +1238,7 @@ Resource of newsletter undelivered emails statistics
             Content-type: application/json
             
 + Response 200
-    
+
             [
                 {
                      "email": "info@firma.cz",
@@ -1655,10 +1661,82 @@ A Notifications collection with Notification object details
 + Response 500
 + Response 503
 
+## /companies/{companyId}/notifications/postfix-messages
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Notification to perform action with.
+
+### Gets list of possible email postfix messages [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+        {
+          "postfixMessages": [
+            "NEW",
+            "SENT",
+            "DELIVERED",
+            "ERROR",
+            "ABORTED",
+            "DEFERRED",
+            "DEFERRED_GREYLISTING",
+            "DEFAULT",
+            "UNSENT"
+          ]
+        }
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+
+## /companies/{companyId}/notifications/email-statuses
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Notification to perform action with.
+
+### Gets list of possible email statuses [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+        {
+          "emailStatuses": [
+            "OK",
+            "INVALID_ADDRESS",
+            "UNRESOLVED_MX",
+            "UNKNOWN_ERROR",
+            "UNSUBSCRIBED",
+            "PREVIOUSLY_UNDELIVERED",
+            "UNSENT"
+          ]
+        }
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+
 ## /companies/{companyId}/notifications/statuses
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
-    
+
 ### Gets notification list of possible statuses [GET]
 + Request
     + Header
@@ -1776,6 +1854,111 @@ A single Notification object with all its details
 + Response 500
 + Response 503
 
+## /companies/{companyId}/notifications/{notificationId}/history/?type={type}&from={from}&to={to}limit={?limit}&offset={?offset}
+A NotificationData collection with NotificationData object details
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + notificationId (required, number, `1`) ... Numeric `notificationId` of the Notification to perform action with.
+    + type (optional, string, `email@example.org`) ... String `type` of the Notifications, possible values: opened/delivered/undelivered
+    + from (optional, string, `2014-06-19T06:00:00+02:00`) ... String `from` datetime filter
+    + to (optional, string, `2016-05-23T06:00:00+02:00`) ... String `to` datetime filter
+    + limit (optional, number, `100`) ... Numeric `limit` to return limited number of records, **default and max value is set to 100**.
+    + offset (optional, number, `0`) ... Numeric `offset` from which record in order to start, **default value is set to 0**.
+    
+
+### List all NotificationData [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": "0dce3e4f-66ca-4d8d-a777-f87c402b1608", 
+                "recipientEmail": "recipient1@email.com",
+                "replyToEmail": "reply-to@email.com",
+                "created": "2014-06-19T06:00:00+02:00",
+                "cc": [
+                    "hrabalo@seznam.cz",
+                    "ondra.hrabal@gmail.com"
+                ],
+                "bcc": [
+                    "hrabalo@seznam.cz",
+                    "ondra.hrabal@gmail.com"
+                ],
+                "data": {
+                    "key1": "value1", 
+                    "key2": "value2"
+                },
+                "attachments":[
+                    {
+                        "displayName": "Priloha 1",
+                        "fileName": "attachment--0000-2222-3333-4444",
+                        "link": "http://img.mailq.cz/obr1.png",
+                        "mimeType": "text/plain"
+                    },
+                    {
+                        "displayName": "Priloha 2",
+                        "fileName": "attachment--1111-2222-3333-4444",
+                        "link": "http://img.mailq.cz/obr2.png",
+                        "mimeType": "image/jpeg"
+                    }
+                ],
+                "emailStatus": "OK",
+                "postfixMessage": "ERROR",
+                "openedTimestamp": null,
+                "undeliveredTimestamp": "null"
+            }, 
+            {
+                "id": "0dce3e4f-66ca-4d8d-a777-f87c402b1608", 
+                "recipientEmailemail r": "recipient1@email.com",
+                "replyToEmail": "reply-to@email.com",
+                "created": "2014-06-19T06:00:00+02:00",
+                "cc": [
+                    "hrabalo@seznam.cz",
+                    "ondra.hrabal@gmail.com"
+                ],
+                "bcc": [
+                    "hrabalo@seznam.cz",
+                    "ondra.hrabal@gmail.com"
+                ],
+                "data": {
+                    "key1": "value1", 
+                    "key2": "value2"
+                },
+                "attachments":[
+                    {
+                        "displayName": "Priloha 1",
+                        "fileName": "attachment--0000-2222-3333-4444",
+                        "link": "http://img.mailq.cz/obr1.png",
+                        "mimeType": "text/plain"
+                    },
+                    {
+                        "displayName": "Priloha 2",
+                        "fileName": "attachment--1111-2222-3333-4444",
+                        "link": "http://img.mailq.cz/obr2.png",
+                        "mimeType": "image/jpeg"
+                    }
+                ],
+                "emailStatus": "OK",
+                "postfixMessage": "ERROR",
+                "openedTimestamp": null,
+                "undeliveredTimestamp": "null"
+            }
+        ]
+        
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
 ## /companies/{companyId}/notifications/{notificationId}/history/{email}?limit={?limit}&offset={?offset}
 A NotificationData collection with NotificationData object details
 + Parameters
@@ -1798,9 +1981,18 @@ A NotificationData collection with NotificationData object details
 
         [
             {
-                "id": 1, 
+                "id": "0dce3e4f-66ca-4d8d-a777-f87c402b1608", 
                 "recipientEmail": "recipient1@email.com",
                 "replyToEmail": "reply-to@email.com",
+                "created": "2014-06-19T06:00:00+02:00",
+                "cc": [
+                    "hrabalo@seznam.cz",
+                    "ondra.hrabal@gmail.com"
+                ],
+                "bcc": [
+                    "hrabalo@seznam.cz",
+                    "ondra.hrabal@gmail.com"
+                ],
                 "data": {
                     "key1": "value1", 
                     "key2": "value2"
@@ -1819,12 +2011,23 @@ A NotificationData collection with NotificationData object details
                         "mimeType": "image/jpeg"
                     }
                 ],
+                "emailStatus": "OK",
+                "postfixMessage": "ERROR",
+                "openedTimestamp": null,
                 "undeliveredTimestamp": "null"
             }, 
             {
-                "id": 2, 
+                "id": "0dce3e4f-66ca-4d8d-a777-f87c402b1608",
                 "recipientEmailemail r": "recipient1@email.com",
                 "replyToEmail": "reply-to@email.com",
+                "cc": [
+                    "hrabalo@seznam.cz",
+                    "ondra.hrabal@gmail.com"
+                ],
+                "bcc": [
+                    "hrabalo@seznam.cz",
+                    "ondra.hrabal@gmail.com"
+                ],
                 "data": {
                     "key1": "value1", 
                     "key2": "value2"
@@ -1843,6 +2046,9 @@ A NotificationData collection with NotificationData object details
                         "mimeType": "image/jpeg"
                     }
                 ],
+                "emailStatus": "OK",
+                "postfixMessage": "ERROR",
+                "openedTimestamp": null,
                 "undeliveredTimestamp": "null"
             }
         ]
@@ -1874,9 +2080,18 @@ A single NotificationData object with all its details
 + Response 200 (application/json)
 
         {
-            "id": 1, 
+            "id": "0dce3e4f-66ca-4d8d-a777-f87c402b1608", 
             "recipientEmail": "recipient1@email.com",
             "replyToEmail": "reply-to@email.com",
+            "created": "2014-06-19T06:00:00+02:00",
+            "cc": [
+                "hrabalo@seznam.cz",
+                "ondra.hrabal@gmail.com"
+            ],
+            "bcc": [
+                "hrabalo@seznam.cz",
+                "ondra.hrabal@gmail.com"
+            ],
             "data": {
                 "key1": "value1", 
                 "key2": "value2"
@@ -1895,6 +2110,9 @@ A single NotificationData object with all its details
                     "mimeType": "image/jpeg"
                 }
             ],
+            "emailStatus": "OK",
+            "postfixMessage": "ERROR",
+            "openedTimestamp": null,
             "undeliveredTimestamp": "null"
         }
         
