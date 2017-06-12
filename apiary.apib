@@ -2187,6 +2187,155 @@ A single NotificationData object with all its details
 + Response 500
 + Response 503
 
+## /companies/{companyId}/notifications/{notificationId}/statistics
+
+Resource of notification statistics
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Notification to perform action with.
+    + notificationId (required, number, `1`) ... Numeric `notificationId` of the Notification to perform action with.
+    
+
+### Get the Notification statistics [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200
+
+            {
+                 "sent": 9,
+                 "delivered": 9,
+                 "opened": 7
+            }
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## /companies/{companyId}/notifications/{notificationId}/opened-emails
+
+Resource of notification opened emails statistics
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Notification to perform action with.
+    + notificationId (required, number, `1`) ... Numeric `notificationId` of the Notification to perform action with.
+    
+
+### Get the Notification opened emails statistics [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200
+
+            [
+                {
+                     "email": "info@firma.cz",
+                     "openedTimestamp": "2014-06-06T16:39:34+02:00"
+                },
+                {
+                     "email": "newsletter@mailq.cz",
+                     "openedTimestamp": "2014-06-06T16:39:34+02:00"
+                }
+            ]
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## /companies/{companyId}/notifications/{notificationId}/unsent-emails
+
+Resource of notification unsent emails statistics
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Notification to perform action with.
+    + notificationId (required, number, `1`) ... Numeric `notificationId` of the Notification to perform action with.
+    
+
+### Get the Notification unsent emails statistics [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200
+
+            [
+                {
+                     "email": "info@firma.cz",
+                     "reason": "INVALID_ADDRESS"
+                },
+                {
+                     "email": "newsletter@mailq.cz",
+                     "reason": "UNRESOLVED_MX"
+                }
+            ]
+            
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## /companies/{companyId}/notifications/{notificationId}/undelivered-emails
+
+Resource of notification undelivered emails statistics
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Notification to perform action with.
+    + notificationId (required, number, `1`) ... Numeric `notificationId` of the Notification to perform action with.
+    
+
+### Get the Notification undelivered emails statistics [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200
+
+            [
+                {
+                     "email": "info@firma.cz",
+                     "reason": "DEFERRED"
+                },
+                {
+                     "email": "newsletter@mailq.cz",
+                     "reason": "ERROR"
+                }
+            ]
+            
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
 # Group SMS-Notifications
 
 ## /companies/{companyId}/sms-notifications?limit={?limit}&offset={?offset}
