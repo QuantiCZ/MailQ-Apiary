@@ -2187,14 +2187,15 @@ A single NotificationData object with all its details
 + Response 500
 + Response 503
 
-## /companies/{companyId}/notifications/{notificationId}/statistics
+## /companies/{companyId}/notifications/{notificationId}/statistics?from={?from}&to={?to}
 
 Resource of notification statistics
 
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Notification to perform action with.
     + notificationId (required, number, `1`) ... Numeric `notificationId` of the Notification to perform action with.
-    
+    + from (required, datetime (ISO 8601), `2014-08-28T17:02:27.761+02:00`) ... Datetime `from`.
+    + to (required, datetime (ISO 8601), `2014-08-28T17:02:27.761+02:00`) ... Datetime `to`.
 
 ### Get the Notification statistics [GET]
 + Request
@@ -2220,14 +2221,17 @@ Resource of notification statistics
 + Response 500
 + Response 503
 
-## /companies/{companyId}/notifications/{notificationId}/opened-emails
+## /companies/{companyId}/notifications/{notificationId}/opened-emails?limit={?limit}&offset={?offset}&from={?from}&to={?to}
 
 Resource of notification opened emails statistics
 
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Notification to perform action with.
     + notificationId (required, number, `1`) ... Numeric `notificationId` of the Notification to perform action with.
-    
+    + limit (optional, number, `100`) ... Numeric `limit` to return limited number of records, **default and max value is set to 100**.
+    + offset (optional, number, `0`) ... Numeric `offset` from which record in order to start, **default value is set to 0**.
+    + from (required, datetime (ISO 8601), `2014-08-28T17:02:27.761+02:00`) ... Datetime `from`.
+    + to (required, datetime (ISO 8601), `2014-08-28T17:02:27.761+02:00`) ... Datetime `to`.
 
 ### Get the Notification opened emails statistics [GET]
 + Request
@@ -2258,14 +2262,17 @@ Resource of notification opened emails statistics
 + Response 500
 + Response 503
 
-## /companies/{companyId}/notifications/{notificationId}/unsent-emails
+## /companies/{companyId}/notifications/{notificationId}/unsent-emails?limit={?limit}&offset={?offset}&from={?from}&to={?to}
 
 Resource of notification unsent emails statistics
 
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Notification to perform action with.
     + notificationId (required, number, `1`) ... Numeric `notificationId` of the Notification to perform action with.
-    
+    + limit (optional, number, `100`) ... Numeric `limit` to return limited number of records, **default and max value is set to 100**.
+    + offset (optional, number, `0`) ... Numeric `offset` from which record in order to start, **default value is set to 0**.
+    + from (required, datetime (ISO 8601), `2014-08-28T17:02:27.761+02:00`) ... Datetime `from`.
+    + to (required, datetime (ISO 8601), `2014-08-28T17:02:27.761+02:00`) ... Datetime `to`.
 
 ### Get the Notification unsent emails statistics [GET]
 + Request
@@ -2297,14 +2304,17 @@ Resource of notification unsent emails statistics
 + Response 500
 + Response 503
 
-## /companies/{companyId}/notifications/{notificationId}/undelivered-emails
+## /companies/{companyId}/notifications/{notificationId}/undelivered-emails?limit={?limit}&offset={?offset}&from={?from}&to={?to}
 
 Resource of notification undelivered emails statistics
 
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Notification to perform action with.
     + notificationId (required, number, `1`) ... Numeric `notificationId` of the Notification to perform action with.
-    
+    + limit (optional, number, `100`) ... Numeric `limit` to return limited number of records, **default and max value is set to 100**.
+    + offset (optional, number, `0`) ... Numeric `offset` from which record in order to start, **default value is set to 0**.
+    + from (required, datetime (ISO 8601), `2014-08-28T17:02:27.761+02:00`) ... Datetime `from`.
+    + to (required, datetime (ISO 8601), `2014-08-28T17:02:27.761+02:00`) ... Datetime `to`.
 
 ### Get the Notification undelivered emails statistics [GET]
 + Request
