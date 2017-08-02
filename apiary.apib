@@ -13,7 +13,8 @@ HOST: https://q.quanti.cz/api/v2
 * DateTimes are specified in the **ISO 8601** format.
 * Use only the **UTF-8** encoding.
 * GET requests returning collection of objects supports pagination using the **limit** and the **offset** query parameters. Maximum **number of returned results is set by default to 100**, **default offset is set to 0**.
-* emails are validated by the regex: [A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z0-9][A-Za-z0-9-]+ and by valid DNS lookup response
+* Emails are validated by the regex: [A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z0-9][A-Za-z0-9-]+ and by valid DNS lookup response
+* **Avoid** using system reserved variables, which are: **email**, **externalLink**, **uuid**, **originRecipient**, **openRateLink**
 
 # Group Campaigns
 Notes related resources of the **Campaigns API**
