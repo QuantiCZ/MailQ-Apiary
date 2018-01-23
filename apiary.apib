@@ -975,6 +975,58 @@ A single Newsletter object with all its details
 + Response 500
 + Response 503
 
+### Update the Newsletter in Ready state [PATCH]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+    
+    + Body
+    
+            {
+                 "name": "Můj API newsletter",
+                 "campaign": "Kampaň",
+                 "subject" : "Dárek",
+                 "senderEmail" : "info@firma.cz",
+                 "replyToEmail" : "info@firma.cz",
+                 "sendAs" : "Perfektní firma",
+                 "text": "Alternative base64 email text",
+                 "recipientsListId": 25,
+                 "templateUrl" : "http://mailq.cz/newsletter.html",
+                 "unsubscribeTemplateUrl" : "http://mailq.cz/unsubscribe.html",
+                 "attachments":[
+                    {
+                        "displayName": "Priloha 1",
+                        "link": null,
+                        "source": "base64text",
+                        "mimeType": "text/plain"
+                    },
+                    {
+                        "displayName": "Priloha 2",
+                        "link": "odkaz na zdroj",
+                        "source": "base64text",
+                        "mimeType": "image/jpeg"
+                    }
+                ],
+                "tags": [
+                    {
+                        "name": "Special action"
+                    }
+                ],
+            }
+            
++ Response 204
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
 ### Delete the Newsletter [DELETE]
 + Request
     + Header
