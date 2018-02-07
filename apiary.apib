@@ -1857,12 +1857,12 @@ A NotificationData collection with NotificationData object details
                 "replyToEmail": "reply-to@email.com",
                 "created": "2014-06-19T06:00:00+02:00",
                 "cc": [
-                    "hrabalo@seznam.cz",
-                    "ondra.hrabal@gmail.com"
+                    "recipient1@email.com",
+                    "recipient2@email.com"
                 ],
                 "bcc": [
-                    "hrabalo@seznam.cz",
-                    "ondra.hrabal@gmail.com"
+                    "recipient3@email.com",
+                    "recipient4@email.com"
                 ],
                 "data": {
                     "key1": "value1", 
@@ -1893,12 +1893,12 @@ A NotificationData collection with NotificationData object details
                 "replyToEmail": "reply-to@email.com",
                 "created": "2014-06-19T06:00:00+02:00",
                 "cc": [
-                    "hrabalo@seznam.cz",
-                    "ondra.hrabal@gmail.com"
+                    "recipient1@email.com",
+                    "recipient2@email.com"
                 ],
                 "bcc": [
-                    "hrabalo@seznam.cz",
-                    "ondra.hrabal@gmail.com"
+                    "recipient3@email.com",
+                    "recipient4@email.com"
                 ],
                 "data": {
                     "key1": "value1", 
@@ -1960,12 +1960,12 @@ A NotificationData collection with NotificationData object details
                 "replyToEmail": "reply-to@email.com",
                 "created": "2014-06-19T06:00:00+02:00",
                 "cc": [
-                    "hrabalo@seznam.cz",
-                    "ondra.hrabal@gmail.com"
+                    "recipient1@email.com",
+                    "recipient2@email.com"
                 ],
                 "bcc": [
-                    "hrabalo@seznam.cz",
-                    "ondra.hrabal@gmail.com"
+                    "recipient3@email.com",
+                    "recipient4@email.com"
                 ],
                 "data": {
                     "key1": "value1", 
@@ -1995,12 +1995,12 @@ A NotificationData collection with NotificationData object details
                 "recipientEmailemail r": "recipient1@email.com",
                 "replyToEmail": "reply-to@email.com",
                 "cc": [
-                    "hrabalo@seznam.cz",
-                    "ondra.hrabal@gmail.com"
+                    "recipient1@email.com",
+                    "recipient2@email.com"
                 ],
                 "bcc": [
-                    "hrabalo@seznam.cz",
-                    "ondra.hrabal@gmail.com"
+                    "recipient3@email.com",
+                    "recipient4@email.com"
                 ],
                 "data": {
                     "key1": "value1", 
@@ -2059,12 +2059,12 @@ A single NotificationData object with all its details
             "replyToEmail": "reply-to@email.com",
             "created": "2014-06-19T06:00:00+02:00",
             "cc": [
-                "hrabalo@seznam.cz",
-                "ondra.hrabal@gmail.com"
+                "recipient1@email.com",
+                "recipient2@email.com"
             ],
             "bcc": [
-                "hrabalo@seznam.cz",
-                "ondra.hrabal@gmail.com"
+                "recipient3@email.com",
+                "recipient4@email.com"
             ],
             "data": {
                 "key1": "value1", 
@@ -2114,17 +2114,18 @@ A single NotificationData object with all its details
             Content-type: application/json
     
     + Body
+
     
             {
                 "recipientEmail": "recipient@email.com",
                 "replyToEmail": "reply-to@email.com",
                 "cc": [
-                    "hrabalo@seznam.cz",
-                    "ondra.hrabal@gmail.com"
+                    "recipient1@email.com",
+                    "recipient2@email.com"
                 ],
                 "bcc": [
-                    "hrabalo@seznam.cz",
-                    "ondra.hrabal@gmail.com"
+                    "recipient3@email.com",
+                    "recipient4@email.com"
                 ],
                 "dateFrom": "2014-06-19T06:00:00+02:00",
                 "data": {
@@ -2975,7 +2976,7 @@ A Recipients collection of the RecipientsList with Recipients object details
           {
             "email": "first-recipient@company.com",
             "data": {
-              "salutation": "Test Ondro",
+              "salutation": "Test osloveni",
               "code": "zxxx"
             }
           },
@@ -3196,6 +3197,86 @@ Single Recipients List Unsubscriber object
 + Response 503
 
 ### Delete the recipients list unsubscriber [DELETE]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 204
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+# Group RecipientInfo
+Notes related resources of the **RecipientInfo API**
+
+## /companies/{companyId}/recipients/{email}
+A single Recipient object with all its data
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + email (required, string, `email@example.org`) ... String `email` of the Recipient
+
+### GET all recipients data [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 200 (application/json)
+
+
+        {
+            "recipientsListRow": {
+                "data": {
+                    "email": "first-recipient@company.com",
+                    "salutation": "Ahoj"
+                },
+                "email": "first-recipient@company.com",
+                "recipientsList": "Auvajs"
+            },
+            "emailResult": {
+                "cc": null,
+                "bcc": null,
+                "created": "2018-01-25T17:06:18+01:00",
+                "batch": "Můj API newsletter1",
+                "replyToEmail": null,
+                "undeliveredTimestamp": "2018-02-07T11:44:12+01:00",
+                "postfixMessage": null,
+                "openedTimestamp": "2018-02-07T11:44:12+01:00",
+                "unsubscribedTimestamp": "2018-02-07T11:44:12+01:00",
+                "id": "14516960-57ce-40dd-8f74-2fe975138b7d",
+                "recipientEmail": "first-recipient@company.com",
+                "mailQueueId": null,
+                "status": {
+                    "enumType": "cz.quanti.mailing.enums.EmailStatus",
+                    "name": "UNSUBSCRIBED"
+                }
+            },
+            "openingHistory": {
+                "openingRate": {
+                    "45": 1
+                },
+                "email": "first-recipient@company.com"
+            }
+        }
+
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
+
+### Delete all recipients data [DELETE]
 + Request
     + Header
 
