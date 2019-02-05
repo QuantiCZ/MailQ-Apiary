@@ -1236,19 +1236,95 @@ Resource of newsletter undelivered emails statistics
 # Group Newsletters Statistics
 Notes related resources of the **Newsletters Statistics API**
 
-## /companies/{companyId}/newsletters-statistics?from={?from}&to={?to}&opened={?opened}&unsubscribed={?unsubscribed}&undelivered={?undelivered}
+## /companies/{companyId}/newsletters-statistics
 All newsletters statistics 
 
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
-    + from (optional, string, `2014-06-19T06:00:00+02:00`) ... String `from` datetime filter
-    + to (optional, string, `2016-05-23T06:00:00+02:00`) ... String `to` datetime filter
-    + opened (optional, boolean, `true`) ... Boolean `opened` for returning opened emails
-    + unsubscribed (optional, boolean, `true`) ... Boolean `unsubscribed` for returning unsubscribed emails
-    + undelivered (optional, boolean, `true`) ... Boolean `undelivered` for returning undelivered emails
     
 
-### List of emails regarding conditions in query parameters [GET]
+### Return all registered requests with its states for newsletter statistics calculations [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+
++ Response 200 (application/json)
+
+            {
+                "statistics": [
+                    {
+                        "id": "1",
+                        "created": "2016-05-23T06:00:00+02:00",
+                        "started": "2016-05-23T06:01:01+02:00",
+                        "finished": null,
+                        "status": "RUNNING"
+                    },
+                    {
+                        "id": "2",
+                        "created": "2016-05-23T06:00:00+02:00",
+                        "started": "2016-05-23T06:00:01+02:00",
+                        "finished": "2016-05-23T06:00:05+02:00",
+                        "status": "DONE"
+                    }
+                ]
+            }
+            
++ Response 401  
++ Response 403
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+### Register a new request for newsletter statistics calculation [POST]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+                        
+    + Body
+    
+            {
+                "from": "2014-06-19T06:00:00+02:00",
+                "to": "2016-05-23T06:00:00+02:00",
+                "opened": true,
+                "unsubscribed": false,
+                "undelivered": false
+            }
+
++ Response 200 (application/json)
+
+            {
+                "id": "1",
+                "created": "2016-05-23T06:00:00+02:00",
+                "started": "2016-05-23T06:01:01+02:00",
+                "finished": null,
+                "status": "WAITING",
+                "emails": null
+            }
+            
++ Response 401  
++ Response 403
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
+## /companies/{companyId}/newsletters-statistics/{requestId}
+Get statistics data
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + requestId (required, String, `1`) ... String `requestId` from the previous POST request for newsletter statistics calculation.
+    
+
+### Newsletter statistics: List of emails regarding conditions in previous POST request [GET]
+
 + Request
     + Header
 
@@ -2927,13 +3003,37 @@ A single RecipientsList object with all its details
 + Response 500
 + Response 503
 
+## /companies/{companyId}/recipients-lists/{recipientsListId}/recipients
+Remove all recipients, leave RecipientsList empty
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
+    + recipientsListId (required, number, `1`) ... Numeric `recipientsListId` of the RecipientsList to perform action with.
+    
+
+### Empty a Recipients list [DELETE]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            Content-type: application/json
+            
++ Response 204
++ Response 401
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
 ## /companies/{companyId}/recipients-lists/{recipientsListId}{?complete}
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Company to perform action with.
     + recipientsListId (required, number, `1`) ... Numeric `recipientsListId` of the RecipientsList to perform action with.
     + complete (required, boolean, `true`) ... Boolean `complete` to delete also all recipients.
 
-### Deletes an RecipientsList with all recipients [DELETE]
+### Deletes a RecipientsList with all recipients [DELETE]
 + Request
     + Header
 
