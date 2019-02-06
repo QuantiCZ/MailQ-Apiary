@@ -1280,6 +1280,9 @@ All newsletters statistics
 + Response 503
 
 ### Register a new request for newsletter statistics calculation [POST]
+
+You can send only few requests at same time. If there are more WAITING or RUNNING then defined threshold server will return 429 response code and you have to waint until stats are FINISHED.
+
 + Request
     + Header
 
@@ -1334,12 +1337,19 @@ Get statistics data
 
 + Response 200 (application/json)
 
-            [
-                "recipient1@email.com",
-                "recipient2@email.com",
-                "recipient3@email.com",
-                "recipient4@email.com"
-            ]
+            {
+                "id": "2",
+                "created": "2016-05-23T06:00:00+02:00",
+                "started": "2016-05-23T06:00:01+02:00",
+                "finished": "2016-05-23T06:00:05+02:00",
+                "status": "DONE",
+                "emails": [
+                    "recipient1@email.com",
+                    "recipient2@email.com",
+                    "recipient3@email.com",
+                    "recipient4@email.com"
+                ]
+            }
             
 + Response 401  
 + Response 403
