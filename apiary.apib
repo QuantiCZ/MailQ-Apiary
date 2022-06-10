@@ -588,7 +588,7 @@ A Newsletter collection with Newsletter object details
             [
                {
                   "id":6,
-                  "name":"tesas",
+                  "name":"Newsletter",
                   "code":null,
                   "subject":"X12",
                   "sendAs":"MailQ",
@@ -763,7 +763,7 @@ A single Newsletter object with all its details
 
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Newsletter to perform action with.
-    + code (required, String, `xxx`) ... Stringd `code` of the Newsletter to perform action with.
+    + code (required, String, `xxx`) ... String `code` of the Newsletter to perform action with.
  
 ### Get a Newsletter [GET]
 + Request
@@ -977,7 +977,7 @@ A single Newsletter object with all its details
 
 ## /companies/{companyId}/newsletters/{newsletterId}/preparation
 
-Resource to starting and stoping newsletter preparation
+Resource to starting and stopping newsletter preparation
 
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the Newsletter to perform action with.
@@ -1164,6 +1164,40 @@ Resource of newsletter unsubscribed emails statistics
 + Response 500
 + Response 503
 
+## /companies/{companyId}/newsletters/{newsletterId}/recipients-csv
+
+Resource of newsletter recipients CSV file
+
++ Parameters
+    + companyId (required, number, `1`) ... Numeric `companyId` of the Newsletter to perform action with.
+    + newsletterId (required, number, `1`) ... Numeric `newsletterId` of the Newsletter to perform action with.
+
+
+### Get the Newsletter recipients CSV file [GET]
++ Request
+    + Header
+
+            X-Api-Key: Company Api Key
+            Accept: application/json
+            
++ Response 200
+    + Header
+
+            Content-type: application/octet-stream
+            Content-disposition: attachment; filename="emails-a7fedf31c9494c0b890a38d7a6a3b402.csv"
+    + Body
+
+            "email","custom_subject","osloveni","created"
+            "email@firma.cz","Muj predmet","Ahoj","Fri Jun 10 12:28:46 CEST 2022"
++ Response 400
++ Response 401  
++ Response 403
++ Response 404
++ Response 405
++ Response 406
++ Response 500
++ Response 503
+
 ## /companies/{companyId}/newsletters/{newsletterId}/unsent-emails
 
 Resource of newsletter unsent emails statistics
@@ -1290,7 +1324,7 @@ All newsletters statistics
 
 ### Register a new request for newsletter statistics calculation [POST]
 
-You can send only few requests at same time. If there are more WAITING or RUNNING then defined threshold server will return 429 response code and you have to waint until stats are FINISHED.
+You can send only few requests at same time. If there are more WAITING or RUNNING then defined threshold server will return 429 response code and you have to wait until stats are FINISHED.
 
 + Request
     + Header
@@ -1393,7 +1427,7 @@ A SMS newsletter collection with SMS newsletter object details
             [
                {
                   "id":6,
-                  "name":"tesas",
+                  "name":"Newsletter",
                   "code":null,
                   "status":"ready",
                   "text": "SMS message text",
@@ -1596,7 +1630,7 @@ A single Newsletter object with all its details
 
 ## /companies/{companyId}/sms-newsletters/{smsNewsletterId}/preparation
 
-Resource to starting and stoping SMS newsletter preparation
+Resource to starting and stopping SMS newsletter preparation
 
 + Parameters
     + companyId (required, number, `1`) ... Numeric `companyId` of the SMS newsletter to perform action with.
@@ -2028,7 +2062,7 @@ A NotificationData collection with NotificationData object details
             }, 
             {
                 "id": "0dce3e4f-66ca-4d8d-a777-f87c402b1608", 
-                "recipientEmailemail r": "recipient1@email.com",
+                "recipientEmail": "recipient1@email.com",
                 "replyToEmail": "reply-to@email.com",
                 "created": "2014-06-19T06:00:00+02:00",
                 "cc": [
@@ -2131,7 +2165,7 @@ A NotificationData collection with NotificationData object details
             }, 
             {
                 "id": "0dce3e4f-66ca-4d8d-a777-f87c402b1608",
-                "recipientEmailemail r": "recipient1@email.com",
+                "recipientEmail": "recipient1@email.com",
                 "replyToEmail": "reply-to@email.com",
                 "cc": [
                     "recipient1@email.com",
@@ -2678,7 +2712,7 @@ Error codes
 | 5003                          | SMS was not delivered during expiration time.                  |
 | 5004                          | Invalid format of phone number                  |
 | 5005                          | Unknown error                   |
-| 5006                          | Event already occured and it does not make sense to send SMS                   |
+| 5006                          | Event already occurred and it does not make sense to send SMS                   |
 | 5007                          | SMS text is too long                   |
 | 5010                          | Part of SMS was delivered but another part was not.                  |
 | 5013                          | Part of SMS was not delivered.                   |
@@ -2753,7 +2787,7 @@ Error codes
 | 5003                          | SMS was not delivered during expiration time.                  |
 | 5004                          | Invalid format of phone number                  |
 | 5005                          | Unknown error                   |
-| 5006                          | Event already occured and it does not make sense to send SMS                   |
+| 5006                          | Event already occurred and it does not make sense to send SMS                   |
 | 5007                          | SMS text is too long                   |
 | 5010                          | Part of SMS was delivered but another part was not.                  |
 | 5013                          | Part of SMS was not delivered.                   |
@@ -3140,7 +3174,7 @@ A Recipients collection of the RecipientsList with Recipients object details
             "email": "first-recipient@company.com",
             "data": {
               "salutation": "Test osloveni",
-              "code": "zxxx"
+              "code": "xxx"
             }
           },
           {
